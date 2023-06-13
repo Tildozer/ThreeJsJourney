@@ -11,8 +11,6 @@ scene.add(mesh);
 const [width, height] = [800, 600];
 const camera = new THREE.PerspectiveCamera(75, width / height);
 camera.position.z = 3.4;
-camera.position.x = 2;
-camera.position.y = 1;
 
 scene.add(camera);
 
