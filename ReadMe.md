@@ -73,3 +73,10 @@
 [Group](https://threejs.org/docs/#api/en/objects/Group)
 
     This is almost identical to an Object3D. Its purpose is to make working with groups of objects syntactically clearer.
+
+### 1.3: **Animations**
+
+[clock](https://threejs.org/docs/#api/en/core/Clock)
+
+    Object for keeping track of time.
+    This uses performance.now() if it is available, otherwise it reverts to the less accurate Date.now().
