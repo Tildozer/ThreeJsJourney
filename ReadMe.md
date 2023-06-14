@@ -142,3 +142,7 @@
     This class can be used to provide a drag'n'drop interaction.
 
 [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API)
+
+### 1.5: **FullScreen and Resizing**
+
+[dblclick](https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event)
