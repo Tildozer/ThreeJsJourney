@@ -146,3 +146,80 @@
 ### 1.5: **FullScreen and Resizing**
 
 [dblclick](https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event)
+
+### 1.6: **Geometries**
+
+[BufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry)
+
+    A representation of mesh, line, or point geometry.
+    Includes vertex positions, face indices, normals, colors, UVs, and custom attributes within buffers, reducing the cost of passing all this data to the GPU.
+
+    To read and edit data in BufferGeometry attributes, see BufferAttribute documentation.
+
+[PlaneGeometry](https://threejs.org/docs/#api/en/geometries/PlaneGeometry)
+
+    A class for generating plane geometries
+
+[circleGeometry](https://threejs.org/docs/#api/en/geometries/CircleGeometry)
+
+    CircleGeometry is a simple shape of Euclidean geometry. It is constructed from a number of triangular segments that are oriented around a central point and extend as far out as a given radius. It is built counter-clockwise from a start angle and a given central angle. It can also be used to create regular polygons, where the number of segments determines the number of sides.
+
+[ConeGeometry](https://threejs.org/docs/#api/en/geometries/ConeGeometry)
+
+    A class for generating cone geometries
+
+[CylinderGeometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry)
+
+    A class for generating cylinder geometries
+
+[RingGeometry](https://threejs.org/docs/#api/en/geometries/RingGeometry)
+
+    A class for generating a two-dimensional ring geometry
+
+[TorusGeometry](https://threejs.org/docs/#api/en/geometries/TorusGeometry)
+
+    A class for generating torus geometries
+
+[TorusKnotGeometry](https://threejs.org/docs/#api/en/geometries/TorusKnotGeometry)
+
+    Creates a torus knot, the particular shape of which is defined by a pair of coprime integers, p and q. If p and q are not coprime, the result will be a torus link.
+
+[DodecahedronGeometry](https://threejs.org/docs/#api/en/geometries/DodecahedronGeometry)
+
+    A class for generating a Dodecahedron geometries
+
+[OctahedronGeometry](https://threejs.org/docs/#api/en/geometries/OctahedronGeometry)
+    A class for generating an octahedron geometries
+
+[TetraheadronGeometry](https://threejs.org/docs/#api/en/geometries/TetrahedronGeometry)
+
+    A class for generating a tetrahedron geometries
+
+[IcosohedronGeometry](https://threejs.org/docs/#api/en/geometries/TetrahedronGeometry)
+
+    A class for generating a icosahedronGeometry
+
+[SphereGeometry](https://threejs.org/docs/#api/en/geometries/SphereGeometry)
+
+    A class for generating sphere geometries
+
+[ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry)
+
+    Creates an one-sided polygonal geometry from one or more path shapes.
+
+[TubeGeometry](https://threejs.org/docs/#api/en/geometries/TubeGeometry)
+
+    Creates a tube that extrudes along a 3d curve.
+
+[LatheGeometry](https://threejs.org/docs/#api/en/geometries/LatheGeometry)
+
+    Creates meshes with axial symmetry like vases. The lathe rotates around the Y axis.
+
+[TextGeometry](https://threejs.org/docs/?q=textge#examples/en/geometries/TextGeometry)
+
+    A class for generating text as a single geometry.
+    It is constructed by providing a string of text, and a set of parameters consisting of a loaded font and settings for the geometry's parent ExtrudeGeometry
+
+[Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array)
+
+    Treats the array the same as a float array in the c language
