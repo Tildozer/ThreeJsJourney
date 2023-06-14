@@ -80,3 +80,65 @@
 
     Object for keeping track of time.
     This uses performance.now() if it is available, otherwise it reverts to the less accurate Date.now().
+
+### 1.4: **Cameras**
+
+[Camera](https://threejs.org/docs/#api/en/cameras/Camera)
+
+    Abstract base class for cameras. 
+    This class should always be inherited when you build a new camera.
+
+[ArrayCamera](https://threejs.org/docs/#api/en/cameras/ArrayCamera)
+
+    ArrayCamera can be used in order to efficiently render a scene with a predefined set of cameras.
+    This is an important performance aspect for rendering VR scenes.
+    An instance of ArrayCamera always has an array of sub cameras.
+    It's mandatory to define for each sub camera the viewport property which determines the part of the viewport that is rendered with this camera.
+
+[StereoCamera](https://threejs.org/docs/#api/en/cameras/StereoCamera)
+
+    Dual PerspectiveCameras used for effects such as 3D Anaglyph or Parallax Barrier.
+
+[CubeCamera](https://threejs.org/docs/#api/en/cameras/CubeCamera)
+
+    Creates 6 cameras that render to a WebGLCubeRenderTarget.
+
+[OrthoGraphicCamera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera)
+
+    In this projection mode, an object's size in the rendered image stays constant regardless of its distance from the camera.
+
+    This can be useful for rendering 2D scenes and UI elements, amongst other things.
+
+[FlyControls](https://threejs.org/docs/#examples/en/controls/FlyControls)
+
+    FlyControls enables a navigation similar to fly modes in DCC tools like Blender. You can arbitrarily transform the camera in 3D space without any limitations (e.g. focus on a specific target).
+
+[FirstPersonControl](https://threejs.org/docs/#examples/en/controls/FirstPersonControls)
+
+    This class is an alternative implementation of FlyControls.
+
+[PointerLockControl](https://threejs.org/docs/#examples/en/controls/PointerLockControls)
+
+    The implementation of this class is based on the Pointer Lock API. PointerLockControls is a perfect choice for first person 3D games.
+
+[OrbitControl](https://threejs.org/docs/#examples/en/controls/OrbitControls)
+
+    Orbit controls allow the camera to orbit around a target.
+    To use this, as with all files in the /examples directory, you will have to include the file separately in your HTML.
+
+[TrackBallControl](https://threejs.org/docs/#examples/en/controls/TrackballControls)
+
+    TrackballControls is similar to OrbitControls. However, it does not maintain a constant camera up vector. That means if the camera orbits over the “north” and “south” poles, it does not flip to stay "right side up".
+
+[TransformControls](https://threejs.org/docs/#examples/en/controls/TransformControls)
+
+    This class can be used to transform objects in 3D space by adapting a similar interaction model of DCC tools like Blender.
+    Unlike other controls, it is not intended to transform the scene's camera.
+
+    TransformControls expects that its attached 3D object is part of the scene graph.
+
+[DragControls](https://threejs.org/docs/#examples/en/controls/DragControls)
+
+    This class can be used to provide a drag'n'drop interaction.
+
+[Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API)
