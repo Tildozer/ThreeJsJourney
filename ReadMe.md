@@ -223,3 +223,27 @@
 [Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array)
 
     Treats the array the same as a float array in the c language
+
+### 1.7: Textures
+
+[Texture](https://threejs.org/docs/index.html#api/en/textures/Texture)
+
+    Create a texture to apply to a surface or as a reflection or refraction map.
+
+    Note: After the initial use of a texture, its dimensions, format, and type cannot be changed.
+    Instead, call .dispose() on the texture and instantiate a new one.
+
+[TextureLoader](https://threejs.org/docs/index.html#api/en/loaders/TextureLoader)
+
+    Class for loading a texture. This uses the ImageLoader internally for loading files.
+
+[LoadingManger](https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager)
+
+    Handles and keeps track of loaded and pending data. A default global instance of this class is created and used by loaders if not supplied manually - see DefaultLoadingManager.
+
+    In general that should be sufficient, however there are times when it can be useful to have separate loaders - for example if you want to show separate loading bars for objects and textures.
+
+[Vector2](https://threejs.org/docs/index.html#api/en/math/Vector2)
+
+    Class representing a 2D vector.
+    A 2D vector is an ordered pair of numbers (labeled x and y), which can be used to represent a number of things
