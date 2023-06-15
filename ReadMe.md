@@ -224,7 +224,7 @@
 
     Treats the array the same as a float array in the c language
 
-### 1.7: Textures
+### 1.7: **Textures**
 
 [Texture](https://threejs.org/docs/index.html#api/en/textures/Texture)
 
@@ -247,3 +247,77 @@
 
     Class representing a 2D vector.
     A 2D vector is an ordered pair of numbers (labeled x and y), which can be used to represent a number of things
+
+### 1.8: **Materials**
+
+[MeshNormalMaterial](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial)
+
+    A material that maps the normal vectors to RGB colors.
+
+[MeshDepthMaterial](https://threejs.org/docs/index.html#api/en/materials/MeshDepthMaterial)
+
+    A material for drawing geometry by depth.
+    Depth is based off of the camera near and far plane.
+    White is nearest, black is farthest.
+
+[MeshMatcapMaterial](https://threejs.org/docs/#api/en/materials/MeshMatcapMaterial)
+
+    MeshMatcapMaterial is defined by a MatCap (or Lit Sphere) texture, which encodes the material color and shading.
+
+    MeshMatcapMaterial does not respond to lights since the matcap image file encodes baked lighting.
+    It will cast a shadow onto an object that receives shadows (and shadow clipping works), but it will not self-shadow or receive shadows.
+
+[ambientLight](https://threejs.org/docs/index.html#api/en/lights/AmbientLight)
+
+    This light globally illuminates all objects in the scene equally.
+
+    This light cannot be used to cast shadows as it does not have a direction.
+
+[PointLight](https://threejs.org/docs/#api/en/lights/PointLight)
+
+    A light that gets emitted from a single point in all directions. A common use case for this is to replicate the light emitted from a bare lightbulb.
+
+    This light can cast shadows - see PointLightShadow page for details.
+
+[MeshLambertMaterial](https://threejs.org/docs/#api/en/materials/MeshLambertMaterial)
+
+    A material for non-shiny surfaces, without specular highlights.
+
+    The material uses a non-physically based Lambertian model for calculating reflectance.
+    This can simulate some surfaces (such as untreated wood or stone) well, but cannot simulate shiny surfaces with specular highlights (such as varnished wood).
+    MeshLambertMaterial uses per-fragment shading.
+
+[MeshPhongMaterial](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial)
+
+    The material uses a non-physically based Blinn-Phong model for calculating reflectance.
+    Unlike the Lambertian model used in the MeshLambertMaterial this can simulate shiny surfaces with specular highlights (such as varnished wood).
+    MeshPhongMaterial uses per-fragment shading.
+
+[MeshToonMaterial](https://threejs.org/docs/#api/en/materials/MeshToonMaterial)
+
+    A material for implimenting toon shading
+
+[MeshStandardMaterial](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
+
+    A standard physically based material, using Metallic-Roughness workflow.
+
+[MeshPhysicalMaterial](https://threejs.org/docs/index.html#api/en/materials/MeshPhysicalMaterial)
+
+    An extension of the MeshStandardMaterial, providing more advanced physically-based rendering properties
+
+[ShaderMaterial](https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial)
+
+    A material rendered with custom shaders. A shader is a small program written in GLSL that runs on the GPU. You may want to use a custom shader if you need to:
+
+    • implement an effect not included with any of the built-in materials
+    • combine many objects into a single BufferGeometry in order to improve performance
+
+[RawShaderMaterial](https://threejs.org/docs/index.html#api/en/materials/RawShaderMaterial)
+
+    This class works just like ShaderMaterial, except that definitions of built-in uniforms and attributes are not automatically prepended to the GLSL shader code.
+
+[CubeTextureLoader](https://threejs.org/docs/index.html#api/en/loaders/CubeTextureLoader)
+
+    CubeTextureLoader can be used to load cube maps.
+    The loader returns an instance of CubeTexture and expects the cube map to be defined as six separate images representing the sides of a cube.
+    Other cube map definitions like vertical and horizontal cross, column and row layouts are not supported.
