@@ -321,3 +321,13 @@
     CubeTextureLoader can be used to load cube maps.
     The loader returns an instance of CubeTexture and expects the cube map to be defined as six separate images representing the sides of a cube.
     Other cube map definitions like vertical and horizontal cross, column and row layouts are not supported.
+
+## 1.9: **3D Text project**
+
+[FontLoader](https://threejs.org/docs/#examples/en/loaders/FontLoader)
+
+    Class for loading a font in JSON format. Returns a font, which is an array of Shapes representing the font. This uses the FileLoader internally for loading files.
+
+[BoxThree](https://threejs.org/docs/index.html#api/en/math/Box3)
+
+    Represents an axis-aligned bounding box (AABB) in 3D space.
