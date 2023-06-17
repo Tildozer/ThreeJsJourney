@@ -331,3 +331,35 @@
 [BoxThree](https://threejs.org/docs/index.html#api/en/math/Box3)
 
     Represents an axis-aligned bounding box (AABB) in 3D space.
+
+## ***Chapter 2:***
+
+### 2.1: Lights
+
+[DirectionalLight](https://threejs.org/docs/index.html#api/en/lights/DirectionalLight)
+
+    A light that gets emitted in a specific direction. This light will behave as though it is infinitely far away and the rays produced from it are all parallel. The common use case for this is to simulate daylight; the sun is far enough away that its position can be considered to be infinite, and all light rays coming from it are parallel.
+
+[RectAreaLight](https://threejs.org/docs/index.html#api/en/lights/RectAreaLight)
+
+    RectAreaLight emits light uniformly across the face a rectangular plane. This light type can be used to simulate light sources such as bright windows or strip li
+
+[SpotLight](https://threejs.org/docs/index.html#api/en/lights/SpotLight)
+
+    This light gets emitted from a single point in one direction, along a cone that increases in size the further from the light it gets.
+
+[HemisphereLightHelper](https://threejs.org/docs/index.html#api/en/helpers/HemisphereLightHelper)
+
+    Creates a visual aid consisting of a spherical Mesh for a HemisphereLight.
+
+[DirectionalLightHelper](https://threejs.org/docs/index.html#api/en/helpers/DirectionalLightHelper)
+
+    Helper object to assist with visualizing a DirectionalLight's effect on the scene. This consists of plane and a line representing the light's position and direction.
+
+[PointLightHelper](https://threejs.org/docs/index.html#api/en/helpers/PointLightHelper)
+
+    This displays a helper object consisting of a spherical Mesh for visualizing a PointLight.
+
+[RectAreaLightHelper](https://threejs.org/docs/index.html#examples/en/helpers/RectAreaLightHelper)
+
+    Creates a visual aid for a RectAreaLight.
