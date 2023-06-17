@@ -363,3 +363,7 @@
 [RectAreaLightHelper](https://threejs.org/docs/index.html#examples/en/helpers/RectAreaLightHelper)
 
     Creates a visual aid for a RectAreaLight.
+
+### 2.2: **Shadows**
+
+    [shadowMaps(Example)](https://threejs.org/examples/webgl_shadowmap_viewer.html)
