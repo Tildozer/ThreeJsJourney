@@ -378,3 +378,7 @@
 
     A class for displaying points.
     The points are rendered by the WebGLRenderer using gl.POINTS.
+
+### 2.4: **AnimationsOnScroll**
+
+[gsap(greensock animation library)](https://greensock.com/gsap/)
