@@ -367,3 +367,13 @@
 ### 2.2: **Shadows**
 
     [shadowMaps(Example)](https://threejs.org/examples/webgl_shadowmap_viewer.html)
+
+### 2.3: **Particles**
+
+[PointsMaterial](https://threejs.org/docs/#api/en/materials/PointsMaterial)
+
+    The default material used by points
+
+[Points](A class for displaying points. The points are rendered by the WebGLRenderer using gl.POINTS.)
+
+    A class for displaying points. The points are rendered by the WebGLRenderer using gl.POINTS.
