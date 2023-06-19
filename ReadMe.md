@@ -374,6 +374,7 @@
 
     The default material used by points
 
-[Points](A class for displaying points. The points are rendered by the WebGLRenderer using gl.POINTS.)
+[Points](https://threejs.org/docs/#api/en/objects/Points)
 
-    A class for displaying points. The points are rendered by the WebGLRenderer using gl.POINTS.
+    A class for displaying points.
+    The points are rendered by the WebGLRenderer using gl.POINTS.
