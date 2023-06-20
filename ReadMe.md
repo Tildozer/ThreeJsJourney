@@ -382,3 +382,38 @@
 ### 2.4: **AnimationsOnScroll**
 
 [gsap(greensock animation library)](https://greensock.com/gsap/)
+
+## chapter 3
+
+### 3.1: **Physics**
+
+[Raycaster](https://threejs.org/docs/index.html#api/en/core/Raycaster)
+
+>#### **Physics Libraries**
+>
+>- *[cannon.js](https://schteppe.github.io/cannon.js/)*
+>
+>> [repository](https://github.com/schteppe/cannon.js)
+>>
+>> [documentation](http://schteppe.github.io/cannon.js/docs/)
+>
+>- *[oimo.js](https://lo-th.github.io/Oimo.js/#basic)*
+>
+>> [repository](https://github.com/lo-th/Oimo.js)
+>>
+>> [documentation](http://lo-th.github.io/Oimo.js/docs.html#world)
+>
+>#### 2D physics Frameworks
+>
+>- *[Matter.js](https://brm.io/matter-js/)*
+>
+>> [repository](https://github.com/liabru/matter-js)
+>>
+>>[documentation](https://brm.io/matter-js/docs/)
+>
+>- *[Plack.js](https://piqnt.com/planck.js)*
+>
+>> [repository](https://github.com/piqnt/planck.js)
+>>
+>>[documentation](https://github.com/piqnt/planck.js/tree/master/docs)
+>
