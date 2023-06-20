@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import * as dat from "lil-gui";
+import gsap from "gsap";
 
 /**
  * Debug
@@ -10,9 +11,10 @@ const parameters = {
   materialColor: "#ffeded",
 };
 
-gui
-  .addColor(parameters, "materialColor")
-  .onChange(() => material.color.set(parameters.materialColor));
+gui.addColor(parameters, "materialColor").onChange(() => {
+  material.color.set(parameters.materialColor);
+  particleMaterial.color.set(parameters.materialColor);
+});
 
 /**
  * Base
@@ -57,6 +59,37 @@ sectionsMeshes[2].position.y = -objectsDistance * 2;
 scene.add(...sectionsMeshes);
 
 /**
+ * Particles
+ */
+
+const particleCounts = 2000;
+const positions = new Float32Array(particleCounts * 3);
+
+for (let i = 0; i < particleCounts; i++) {
+  positions[i * 3] = (Math.random() - 0.5) * 10;
+  positions[i * 3 + 1] =
+    objectsDistance * 0.5 - Math.random() * objectsDistance * 3;
+  positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+}
+const particleGeometry = new THREE.BufferGeometry();
+particleGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(positions, 3)
+);
+
+// Material
+const particleMaterial = new THREE.PointsMaterial({
+  color: parameters.materialColor,
+  sizeAttenuation: true,
+  size: 0.03,
+});
+
+// points
+const particles = new THREE.Points(particleGeometry, particleMaterial);
+
+scene.add(particles);
+
+/**
  * Lights
  */
 const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
@@ -90,6 +123,7 @@ window.addEventListener("resize", () => {
  * Camera
  */
 // Base camera
+const cameraGroup = new THREE.Group();
 const camera = new THREE.PerspectiveCamera(
   35,
   sizes.width / sizes.height,
@@ -97,7 +131,8 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 camera.position.z = 6;
-scene.add(camera);
+cameraGroup.add(camera);
+scene.add(cameraGroup);
 
 /**
  * Renderer
@@ -113,28 +148,56 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  * Animate
  */
 const clock = new THREE.Clock();
+let previousTime = 0;
 
 let scrollY = window.scrollY;
-
-const cursor = {
-    x: 0,
-    y: 0,
-}
-
+let currentSection = 0;
 window.addEventListener("scroll", (ev) => {
   scrollY = window.scrollY;
+  const newSection = Math.round(scrollY / sizes.height);
+
+  if (newSection !== currentSection) {
+    currentSection = newSection;
+
+    gsap.to(sectionsMeshes[currentSection].rotation, {
+      duration: 1.5,
+      ease: "power2.inOut",
+      x: "+=6",
+      y: "+=3",
+      z: "+=1.5",
+    });
+  }
+});
+
+const cursor = {
+  x: 0,
+  y: 0,
+};
+
+window.addEventListener("mousemove", (ev) => {
+  cursor.x = ev.clientX / sizes.width - 0.5;
+  cursor.y = ev.clientY / sizes.height - 0.5;
 });
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+  const deltaTime = elapsedTime - previousTime;
+  previousTime = elapsedTime;
   // Animate camera
   camera.position.y = (-scrollY / sizes.height) * objectsDistance;
+
+  const parallaxX = cursor.x * 0.5;
+  const parallaxY = -cursor.y * 0.5;
+  cameraGroup.position.x +=
+    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
+  cameraGroup.position.y +=
+    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
 
   //   animate meshes
   for (let i = 0; i < sectionsMeshes.length; i++) {
     const mesh = sectionsMeshes[i];
-    mesh.rotation.x = elapsedTime * 0.1;
-    mesh.rotation.y = elapsedTime * 0.12;
+    mesh.rotation.x += deltaTime * 0.1;
+    mesh.rotation.y += deltaTime * 0.12;
     if (sizes.width < 700) {
       mesh.position.x = 0;
     } else {
