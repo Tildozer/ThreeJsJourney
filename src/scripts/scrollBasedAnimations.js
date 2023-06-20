@@ -10,7 +10,9 @@ const parameters = {
   materialColor: "#ffeded",
 };
 
-gui.addColor(parameters, "materialColor");
+gui
+  .addColor(parameters, "materialColor")
+  .onChange(() => material.color.set(parameters.materialColor));
 
 /**
  * Base
@@ -22,13 +24,45 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
- * Test cube
+ * Objects
  */
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1),
-  new THREE.MeshBasicMaterial({ color: parameters.materialColor })
-);
-scene.add(cube);
+const objectsDistance = 4;
+
+const textureLoader = new THREE.TextureLoader();
+
+const gradientTexture = textureLoader.load("textures/gradients/5.jpg");
+
+const material = new THREE.MeshToonMaterial({
+  color: parameters.materialColor,
+  gradientMap: gradientTexture,
+});
+gradientTexture.magFilter = THREE.NearestFilter;
+const sectionsMeshes = [
+  new THREE.Mesh(new THREE.TorusGeometry(1, 0.4, 16, 60), material),
+  new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material),
+  new THREE.Mesh(new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16), material),
+];
+
+// mesh1.position.y = 2;
+// mesh1.scale.set(0.5, 0.5, 0.5);
+
+// mesh2.visible = false;
+
+// mesh3.position.y = -2;
+// mesh3.scale.set(0.5, 0.5, 0.5);
+sectionsMeshes[0].position.y = -objectsDistance * 0;
+sectionsMeshes[1].position.y = -objectsDistance * 1;
+sectionsMeshes[2].position.y = -objectsDistance * 2;
+
+scene.add(...sectionsMeshes);
+
+/**
+ * Lights
+ */
+const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
+directionalLight.position.set(1, 1, 0);
+
+scene.add(directionalLight);
 
 /**
  * Sizes
@@ -70,6 +104,7 @@ scene.add(camera);
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
+  alpha: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -79,8 +114,33 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  */
 const clock = new THREE.Clock();
 
+let scrollY = window.scrollY;
+
+const cursor = {
+    x: 0,
+    y: 0,
+}
+
+window.addEventListener("scroll", (ev) => {
+  scrollY = window.scrollY;
+});
+
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+  // Animate camera
+  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
+
+  //   animate meshes
+  for (let i = 0; i < sectionsMeshes.length; i++) {
+    const mesh = sectionsMeshes[i];
+    mesh.rotation.x = elapsedTime * 0.1;
+    mesh.rotation.y = elapsedTime * 0.12;
+    if (sizes.width < 700) {
+      mesh.position.x = 0;
+    } else {
+      mesh.position.x = 2 * (i % 2 === 0 ? 1 : -1);
+    }
+  }
 
   // Render
   renderer.render(scene, camera);
