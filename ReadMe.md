@@ -389,6 +389,9 @@
 
 [Raycaster](https://threejs.org/docs/index.html#api/en/core/Raycaster)
 
+    This class is designed to assist with raycasting.
+    Raycasting is used for mouse picking (working out what objects in the 3d space the mouse is over) amongst other things.
+
 >#### **Physics Libraries**
 >
 >- *[cannon.js](https://schteppe.github.io/cannon.js/)*
@@ -409,7 +412,7 @@
 >>
 >> [documentation](http://lo-th.github.io/Oimo.js/docs.html#world)
 >
->#### 2D physics Frameworks
+>#### **2D physics Frameworks**
 >
 >- *[Matter.js](https://brm.io/matter-js/)*
 >
@@ -423,3 +426,38 @@
 >>
 >>[documentation](https://github.com/piqnt/planck.js/tree/master/docs)
 >
+
+### 3.2: **Imported models**
+
+[GLTFLoader](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
+
+    glTF (GL Transmission Format) is an open format specification for efficient delivery and loading of 3D content.
+    Assets may be provided either in JSON (.gltf) or binary (.glb) format. External files store textures (.jpg, .png) and additional binary data (.bin).
+    A glTF asset may deliver one or more scenes, including meshes, materials, textures, skins, skeletons, morph targets, animations, lights, and/or cameras.
+
+[DRACOLoader](https://threejs.org/docs/#examples/en/loaders/DRACOLoader)
+
+    A loader for geometry compressed with the Draco library.
+
+[Bone](https://threejs.org/docs/#api/en/objects/Bone)
+
+    A bone which is part of a Skeleton.
+    The skeleton in turn is used by the SkinnedMesh.
+    Bones are almost identical to a blank Object3D.
+
+[SkinnedMesh](https://threejs.org/docs/#api/en/objects/SkinnedMesh)
+
+    A mesh that has a Skeleton with bones that can then be used to animate the vertices of the geometry.
+
+[AnimationClip](https://threejs.org/docs/#api/en/animation/AnimationClip)
+
+    An AnimationClip is a reusable set of keyframe tracks which represent an animation.
+
+[AnimationMixer](https://threejs.org/docs/#api/en/animation/AnimationMixer)
+
+    The AnimationMixer is a player for animations on a particular object in the scene.
+    When multiple objects in the scene are animated independently, one AnimationMixer may be used for each object.
+
+[AnimationAction](https://threejs.org/docs/#api/en/animation/AnimationAction)
+
+    AnimationActions schedule the performance of the animations which are stored in AnimationClips.
