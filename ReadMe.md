@@ -396,6 +396,12 @@
 >> [repository](https://github.com/schteppe/cannon.js)
 >>
 >> [documentation](http://schteppe.github.io/cannon.js/docs/)
+>>>
+>>> ##### **Updated Branch** cannon.js
+>>>
+>>> [repository](https://github.com/pmndrs/cannon-es)
+>>>
+>>> [documentation](https://pmndrs.github.io/cannon-es/docs/)
 >
 >- *[oimo.js](https://lo-th.github.io/Oimo.js/#basic)*
 >
