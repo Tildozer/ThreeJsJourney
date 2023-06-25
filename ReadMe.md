@@ -467,3 +467,21 @@
 [Blender Shortcuts](https://docs.google.com/document/d/1wZzJrEgNye2ZQqwe8oBh54AXwF5cYIe56EGFe2bb0QU/edit?pli=1)
 
 [Blender Youtube](https://www.youtube.com/user/BlenderFoundation)
+
+### 3.4: **Enviroment maps**
+
+[GLTF Sample Models](https://github.com/KhronosGroup/glTF-Sample-Models)
+
+[PolyHaven](https://polyhaven.com/)
+
+[WebGLCubeRenderTarget](https://threejs.org/docs/index.html#api/en/renderers/WebGLCubeRenderTarget)
+
+    Used by the CubeCamera as its WebGLRenderTarget.
+
+[Layers](https://threejs.org/docs/index.html#api/en/core/Layers)
+
+    A Layers object assigns an Object3D to 1 or more of 32 layers numbered 0 to 31 -
+    internally the layers are stored as a bit mask, and by default all Object3Ds are a member of layer 0.
+
+    This can be used to control visibility -
+    an object must share a layer with a camera to be visible when that camera's view is rendered.
