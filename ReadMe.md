@@ -461,3 +461,9 @@
 [AnimationAction](https://threejs.org/docs/#api/en/animation/AnimationAction)
 
     AnimationActions schedule the performance of the animations which are stored in AnimationClips.
+
+### 3.3: **Blender resources**
+
+[Blender Shortcuts](https://docs.google.com/document/d/1wZzJrEgNye2ZQqwe8oBh54AXwF5cYIe56EGFe2bb0QU/edit?pli=1)
+
+[Blender Youtube](https://www.youtube.com/user/BlenderFoundation)
