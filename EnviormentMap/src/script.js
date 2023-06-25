@@ -1,12 +1,26 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as dat from "lil-gui";
+
+/**
+ * Loaders
+ */
+const LoadingManager = new THREE.LoadingManager(
+  () => console.log("loaded"),
+  () => console.log("..."),
+  (url) => console.log(url)
+);
+
+const gltfLoader = new GLTFLoader(LoadingManager);
+const cubeTextureLoader = new THREE.CubeTextureLoader(LoadingManager);
 
 /**
  * Base
  */
 // Debug
 const gui = new dat.GUI();
+const globalSettings = {};
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -14,16 +28,65 @@ const canvas = document.querySelector("canvas.webgl");
 // Scene
 const scene = new THREE.Scene();
 
+const updateAllMaterial = () => {
+  scene.traverse((child) => {
+    child.isMesh && child.material.isMeshStandardMaterial
+      ? (child.material.envMapIntensity = globalSettings.envMapIntensity)
+      : null;
+  });
+};
+
+/**
+ * Enviroment Map
+ */
+scene.backgroundBlurriness = 0;
+scene.backgroundIntensity = 1;
+globalSettings.envMapIntensity = 1;
+
+gui.add(scene, "backgroundIntensity").min(0).max(10).step(0.001);
+gui.add(scene, "backgroundBlurriness").min(0).max(1).step(0.001);
+gui
+  .add(globalSettings, "envMapIntensity")
+  .min(0)
+  .max(10)
+  .step(0.001)
+  .onChange(updateAllMaterial);
+// LDR Cube Texture
+const enviromentMap = cubeTextureLoader.load([
+  "/environmentMaps/0/px.png",
+  "/environmentMaps/0/nx.png",
+  "/environmentMaps/0/py.png",
+  "/environmentMaps/0/ny.png",
+  "/environmentMaps/0/pz.png",
+  "/environmentMaps/0/nz.png",
+]);
+scene.background = enviromentMap;
+scene.environment = enviromentMap;
+
 /**
  * Torus Knot
  */
 const torusKnot = new THREE.Mesh(
   new THREE.TorusKnotGeometry(1, 0.4, 100, 16),
-  new THREE.MeshBasicMaterial()
+  new THREE.MeshStandardMaterial({
+    roughness: 0.3,
+    metalness: 1,
+    color: 0xaaaaaa,
+  })
 );
 torusKnot.position.y = 4;
+torusKnot.position.x = -4;
 scene.add(torusKnot);
 
+/**
+ * Models
+ */
+gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
+  gltf.scene.scale.set(10, 10, 10);
+  scene.add(gltf.scene);
+
+  updateAllMaterial();
+});
 /**
  * Sizes
  */
