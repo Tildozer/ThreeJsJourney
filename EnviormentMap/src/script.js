@@ -121,7 +121,28 @@ gui
 /**
  * Real Time Enviroment Map
  */
+const enviromentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/interior_views_cozy_wood_cabin_with_cauldron_and_p.jpg');
 
+enviromentMap.mapping = THREE.EquirectangularReflectionMapping;
+
+enviromentMap.colorSpace = THREE.SRGBColorSpace;
+scene.background = enviromentMap;
+
+const holyDonut = new THREE.Mesh(
+  new THREE.TorusGeometry(8, 0.5),
+  new THREE.MeshBasicMaterial({ color: new THREE.Color(10, 4, 2)})
+);
+
+holyDonut.position.y = 3.5;
+holyDonut.layers.enable(1);
+
+scene.add(holyDonut);
+
+const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, { type: THREE.HalfFloatType });
+scene.environment = cubeRenderTarget.texture;
+
+const cubeCamera = new THREE.CubeCamera(0.1, 100, cubeRenderTarget);
+cubeCamera.layers.set(1);
 
 // 
 /**
@@ -180,13 +201,15 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(4, 5, 4);
+camera.position.set(4, 5, 15);
 scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.target.y = 3.5;
 controls.enableDamping = true;
+controls.enableZoom = false;
+controls.enablePan = false;
 
 /**
  * Renderer
@@ -204,6 +227,13 @@ const clock = new THREE.Clock();
 const tick = () => {
   // Time
   const elapsedTime = clock.getElapsedTime();
+
+  // Real Time enviroment map
+  if(holyDonut){
+    holyDonut.rotation.x = Math.sin(elapsedTime) * 2;
+
+    cubeCamera.update(renderer, scene)
+  }
 
   // Update controls
   controls.update();
