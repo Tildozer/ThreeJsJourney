@@ -1,6 +1,9 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
+import { RGBELoader } from "three/addons/loaders/RGBELoader";
+import { EXRLoader } from "three/addons/loaders/EXRLoader";
+import { GroundProjectedSkybox } from "three/addons/objects/GroundProjectedSkybox"
 import * as dat from "lil-gui";
 
 /**
@@ -14,6 +17,9 @@ const LoadingManager = new THREE.LoadingManager(
 
 const gltfLoader = new GLTFLoader(LoadingManager);
 const cubeTextureLoader = new THREE.CubeTextureLoader(LoadingManager);
+const rgbeLoader = new RGBELoader(LoadingManager);
+const exrLoader = new EXRLoader(LoadingManager);
+const textureLoader = new THREE.TextureLoader(LoadingManager);
 
 /**
  * Base
@@ -52,17 +58,67 @@ gui
   .step(0.001)
   .onChange(updateAllMaterial);
 // LDR Cube Texture
-const enviromentMap = cubeTextureLoader.load([
-  "/environmentMaps/0/px.png",
-  "/environmentMaps/0/nx.png",
-  "/environmentMaps/0/py.png",
-  "/environmentMaps/0/ny.png",
-  "/environmentMaps/0/pz.png",
-  "/environmentMaps/0/nz.png",
-]);
-scene.background = enviromentMap;
-scene.environment = enviromentMap;
+// const enviromentMap = cubeTextureLoader.load([
+//   "/environmentMaps/0/px.png",
+//   "/environmentMaps/0/nx.png",
+//   "/environmentMaps/0/py.png",
+//   "/environmentMaps/0/ny.png",
+//   "/environmentMaps/0/pz.png",
+//   "/environmentMaps/0/nz.png",
+// ]);
+// scene.background = enviromentMap;
+// scene.environment = enviromentMap;
 
+// HDR (RGBE) equirectantangular
+// 
+// rgbeLoader.load(
+//   "/environmentMaps/0/2k.hdr",
+//   (enviromentMap) => {
+//     console.log(enviromentMap);
+//     enviromentMap.mapping = THREE.EquirectangularReflectionMapping;
+//     scene.background = enviromentMap;
+//     scene.environment = enviromentMap;
+//   }
+// )
+
+//  HRD (EXR) equirectantangular
+
+// exrLoader.load(
+//   '/environmentMaps/nvidiaCanvas-4k.exr', 
+//   (envMap) => {
+//     console.log(envMap);
+//         envMap.mapping = THREE.EquirectangularReflectionMapping;
+//         scene.background = envMap;
+//         scene.environment = envMap;
+// })
+
+// LDR equirectantangular
+// const enviromentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/anime_art_style_japan_streets_with_cherry_blossom_.jpg');
+
+// enviromentMap.mapping = THREE.EquirectangularReflectionMapping;
+
+// enviromentMap.colorSpace = THREE.SRGBColorSpace;
+// scene.background = enviromentMap;
+// scene.environment = enviromentMap;
+
+// Ground projected skybox
+
+// rgbeLoader.load(
+//   '/environmentMaps/2/2k.hdr',
+//   (enviromentMap) => {
+//     enviromentMap.mapping = THREE.EquirectangularReflectionMapping;
+//     scene.environment = enviromentMap;
+
+//     const skybox = new GroundProjectedSkybox(enviromentMap);
+//     skybox.scale.setScalar(50)
+//     scene.add(skybox);
+
+//     gui.add(skybox, 'radius', 1, 200, 0.1).name('skyboxRaduis');
+//     gui.add(skybox, 'height', 1, 200, 0.1).name('skyboxHeight');
+//   }
+// )
+
+// 
 /**
  * Torus Knot
  */
