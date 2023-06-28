@@ -5,6 +5,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import * as dat from "lil-gui";
 
 THREE.ColorManagement.enabled = false;
+// Test 
 
 /**
  * Base
