@@ -15,7 +15,9 @@ const rgbeLoader = new RGBELoader();
  */
 // Debug
 const gui = new dat.GUI();
-const global = {};
+const global = {
+
+};
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -113,6 +115,17 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Tone Mapping
+renderer.toneMapping = THREE.ReinhardToneMapping;
+
+gui.add(renderer, "toneMapping", {
+  No: THREE.NoToneMapping,
+  Linear: THREE.LinearToneMapping,
+  Reinhard: THREE.ReinhardToneMapping,
+  Cineion: THREE.CineonToneMapping,
+  ACESFilmic: THREE.ACESFilmicToneMapping,
+})
 
 /**
  * Animate
