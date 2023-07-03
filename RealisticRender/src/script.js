@@ -32,6 +32,8 @@ const updateAllMaterials = () => {
   scene.traverse((child) => {
     if (child.isMesh && child.material.isMeshStandardMaterial) {
       child.material.envMapIntensity = global.envMapIntensity;
+      child.castShadow = true;
+      child.receiveShadow = true;
     }
   });
 };
@@ -56,6 +58,28 @@ rgbeLoader.load("/environmentMaps/0/2k.hdr", (environmentMap) => {
   scene.environment = environmentMap;
 });
 
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+directionalLight.position.set(-4, 6.5, 2.5);
+
+directionalLight.castShadow = true;
+directionalLight.shadow.camera.far = 15;
+directionalLight.shadow.mapSize.set(1024, 1024);
+
+scene.add(directionalLight);
+const directionalLightFolder = gui.addFolder("directional Light");
+directionalLightFolder.add(directionalLight, "intensity").min(0).max(10).step(0.001)
+directionalLightFolder.add(directionalLight.position, "x").min(-10).max(10).step(0.001).name("x postion");
+directionalLightFolder.add(directionalLight.position, "y").min(-10).max(10).step(0.001).name("y position");
+directionalLightFolder.add(directionalLight.position, "z").min(-10).max(10).step(0.001).name("z position");
+directionalLightFolder.close();
+
+// light Helper
+
+const directionalLightHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+scene.add(directionalLightHelper);
+
+directionalLight.target.position.set(0, 4, 0);
+directionalLight.target.updateWorldMatrix();
 /**
  * Models
  */
@@ -112,12 +136,22 @@ controls.enableDamping = true;
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
+  antialias: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.useLegacyLights = false;
+
+gui.add(renderer, "useLegacyLights");
+
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFShadowMap;
+
 
 // Tone Mapping
 renderer.toneMapping = THREE.ReinhardToneMapping;
+renderer.toneMappingExposure = 3;
+
 
 gui.add(renderer, "toneMapping", {
   No: THREE.NoToneMapping,
@@ -126,6 +160,11 @@ gui.add(renderer, "toneMapping", {
   Cineion: THREE.CineonToneMapping,
   ACESFilmic: THREE.ACESFilmicToneMapping,
 })
+
+gui.add(renderer, "toneMappingExposure")
+  .min(0)
+  .max(10)
+  .step(0.001);
 
 /**
  * Animate
