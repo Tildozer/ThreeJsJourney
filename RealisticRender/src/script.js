@@ -15,9 +15,7 @@ const rgbeLoader = new RGBELoader();
  */
 // Debug
 const gui = new dat.GUI();
-const global = {
-
-};
+const global = {};
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -67,15 +65,36 @@ directionalLight.shadow.mapSize.set(1024, 1024);
 
 scene.add(directionalLight);
 const directionalLightFolder = gui.addFolder("directional Light");
-directionalLightFolder.add(directionalLight, "intensity").min(0).max(10).step(0.001)
-directionalLightFolder.add(directionalLight.position, "x").min(-10).max(10).step(0.001).name("x postion");
-directionalLightFolder.add(directionalLight.position, "y").min(-10).max(10).step(0.001).name("y position");
-directionalLightFolder.add(directionalLight.position, "z").min(-10).max(10).step(0.001).name("z position");
+directionalLightFolder
+  .add(directionalLight, "intensity")
+  .min(0)
+  .max(10)
+  .step(0.001);
+directionalLightFolder
+  .add(directionalLight.position, "x")
+  .min(-10)
+  .max(10)
+  .step(0.001)
+  .name("x postion");
+directionalLightFolder
+  .add(directionalLight.position, "y")
+  .min(-10)
+  .max(10)
+  .step(0.001)
+  .name("y position");
+directionalLightFolder
+  .add(directionalLight.position, "z")
+  .min(-10)
+  .max(10)
+  .step(0.001)
+  .name("z position");
 directionalLightFolder.close();
 
 // light Helper
 
-const directionalLightHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+const directionalLightHelper = new THREE.CameraHelper(
+  directionalLight.shadow.camera
+);
 scene.add(directionalLightHelper);
 
 directionalLight.target.position.set(0, 4, 0);
@@ -147,11 +166,9 @@ gui.add(renderer, "useLegacyLights");
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
 
-
 // Tone Mapping
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 3;
-
 
 gui.add(renderer, "toneMapping", {
   No: THREE.NoToneMapping,
@@ -159,12 +176,9 @@ gui.add(renderer, "toneMapping", {
   Reinhard: THREE.ReinhardToneMapping,
   Cineion: THREE.CineonToneMapping,
   ACESFilmic: THREE.ACESFilmicToneMapping,
-})
+});
 
-gui.add(renderer, "toneMappingExposure")
-  .min(0)
-  .max(10)
-  .step(0.001);
+gui.add(renderer, "toneMappingExposure").min(0).max(10).step(0.001);
 
 /**
  * Animate
