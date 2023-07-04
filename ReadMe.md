@@ -485,3 +485,7 @@
 
     This can be used to control visibility -
     an object must share a layer with a camera to be visible when that camera's view is rendered.
+
+### 3.7: **Code structure for bigger projects**
+
+[how to dispose of objects](https://threejs.org/docs/#manual/en/introduction/How-to-dispose-of-objects)
