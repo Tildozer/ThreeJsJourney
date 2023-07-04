@@ -9,6 +9,7 @@ import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
  */
 const gltfLoader = new GLTFLoader();
 const rgbeLoader = new RGBELoader();
+const textureLoader = new THREE.TextureLoader();
 
 /**
  * Base
@@ -58,6 +59,8 @@ rgbeLoader.load("/environmentMaps/0/2k.hdr", (environmentMap) => {
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
 directionalLight.position.set(-4, 6.5, 2.5);
+directionalLight.shadow.bias = -0.004;
+directionalLight.shadow.normalBias = 0.027;
 
 directionalLight.castShadow = true;
 directionalLight.shadow.camera.far = 15;
@@ -103,12 +106,79 @@ directionalLight.target.updateWorldMatrix();
  * Models
  */
 // Helmet
-gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
-  gltf.scene.scale.set(10, 10, 10);
+// gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
+//   gltf.scene.scale.set(10, 10, 10);
+//   scene.add(gltf.scene);
+
+//   updateAllMaterials();
+// });
+
+gltfLoader.load("/models/hamburger.glb", (gltf) => {
+  gltf.scene.scale.set(0.4, 0.4, 0.4);
+  gltf.scene.position.set(0, 2.5, 0);
   scene.add(gltf.scene);
 
   updateAllMaterials();
 });
+/**
+ * Floor
+ */
+
+const floorARM = textureLoader.load(
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_arm_1k.jpg"
+);
+const floorDiff = textureLoader.load(
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_diff_1k.jpg"
+);
+const floorNorm = textureLoader.load(
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_nor_gl_1k.png"
+);
+
+floorDiff.colorSpace = THREE.SRGBColorSpace;
+
+const floor = new THREE.Mesh(
+  new THREE.PlaneGeometry(8, 8),
+  new THREE.MeshStandardMaterial({
+    map: floorDiff,
+    normalMap: floorNorm,
+    aoMap: floorARM,
+    roughnessMap: floorARM,
+    metalnessMap: floorARM,
+  })
+);
+
+floor.rotation.x = -Math.PI * 0.5;
+// floor.rotation.y = Math.PI * 0.5;
+scene.add(floor);
+
+/**
+ * Background
+ */
+const brickARM = textureLoader.load(
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_arm_1k.jpg"
+);
+const brickDiff = textureLoader.load(
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_diff_1k.jpg"
+);
+const brickNorm = textureLoader.load(
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_nor_gl_1k.png"
+);
+brickDiff.colorSpace = THREE.SRGBColorSpace;
+
+const brickBackground = new THREE.Mesh(
+  new THREE.PlaneGeometry(8, 8),
+  new THREE.MeshStandardMaterial({
+    map: brickDiff,
+    normalMap: brickNorm,
+    aoMap: brickARM,
+    roughnessMap: brickARM,
+    metalnessMap: brickARM,
+  })
+);
+
+brickBackground.position.y = 4;
+brickBackground.position.z = -4;
+scene.add(brickBackground);
 
 /**
  * Sizes
