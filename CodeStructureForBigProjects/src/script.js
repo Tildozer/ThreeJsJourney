@@ -4,7 +4,9 @@
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Experience from "./Experience/Experience";
 
-const experience = new Experience();
+const canvas = document.querySelector("canvas.webgl");
+
+const experience = new Experience(canvas);
 
 // /**
 //  * Loaders
