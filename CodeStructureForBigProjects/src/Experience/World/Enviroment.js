@@ -12,10 +12,37 @@ export default class Environment {
     this.scene.add(this.sunlight);
   }
 
+  setEvironmentMap() {
+    this.environmentMap = {};
+    this.environmentMap.texture = this.resources.items.environmentMapTexture;
+    // console.log(this.resources.entexture);
+    // console.log(this.environmentMap.texture);
+    this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace;
+
+    this.scene.environment = this.environmentMap.texture;
+
+    this.environmentMap.updateMaterial = () => {
+      this.scene.traverse((child) => {
+        if (
+          child instanceof THREE.Mesh &&
+          child.material instanceof THREE.MeshStandardMaterial
+        ) {
+          child.material.envMap = this.environmentMap.texture;
+          child.material.envMapIntensity = this.environmentMap.envMapIntensity;
+          child.material.needsUpdate = true;
+        }
+      });
+    };
+
+    this.environmentMap.updateMaterial();
+  }
+
   constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
+    this.resources = this.experience.resources;
 
     this.setSunlight();
+    this.setEvironmentMap();
   }
 }
