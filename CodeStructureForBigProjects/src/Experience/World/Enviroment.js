@@ -19,6 +19,7 @@ export default class Environment {
     // console.log(this.environmentMap.texture);
     this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace;
 
+    // this.scene.background = this.environmentMap
     this.scene.environment = this.environmentMap.texture;
 
     this.environmentMap.updateMaterial = () => {

@@ -30,6 +30,7 @@ export default class Floor {
 
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.matrial)
+    this.mesh.rotation.x = -Math.PI * 0.5
     this.scene.add(this.mesh)
   }
 

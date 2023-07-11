@@ -46,20 +46,6 @@ const experience = new Experience(canvas);
 //   });
 // };
 
-// /**
-//  * Environment map
-//  */
-// const environmentMap = cubeTextureLoader.load([
-//   "/textures/environmentMap/px.jpg",
-//   "/textures/environmentMap/nx.jpg",
-//   "/textures/environmentMap/py.jpg",
-//   "/textures/environmentMap/ny.jpg",
-//   "/textures/environmentMap/pz.jpg",
-//   "/textures/environmentMap/nz.jpg",
-// ]);
-
-// environmentMap.colorSpace = THREE.SRGBColorSpace;
-
 // // scene.background = environmentMap
 // scene.environment = environmentMap;
 
@@ -89,27 +75,6 @@ const experience = new Experience(canvas);
 //   // Update materials
 //   updateAllMaterials();
 // });
-
-// /**
-//  * Floor
-//  */
-// const floorColorTexture = textureLoader.load("textures/dirt/color.jpg");
-// floorColorTexture.colorSpace = THREE.SRGBColorSpace;
-// floorColorTexture.repeat.set(1.5, 1.5);
-// floorColorTexture.wrapS = THREE.RepeatWrapping;
-// floorColorTexture.wrapT = THREE.RepeatWrapping;
-
-// const floorNormalTexture = textureLoader.load("textures/dirt/normal.jpg");
-// floorNormalTexture.repeat.set(1.5, 1.5);
-// floorNormalTexture.wrapS = THREE.RepeatWrapping;
-// floorNormalTexture.wrapT = THREE.RepeatWrapping;
-
-// const floorGeometry = new THREE.CircleGeometry(5, 64);
-// const floorMaterial = new THREE.MeshStandardMaterial({
-//   map: floorColorTexture,
-//   normalMap: floorNormalTexture,
-// });
-// const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 // floor.rotation.x = -Math.PI * 0.5;
 // scene.add(floor);
 
