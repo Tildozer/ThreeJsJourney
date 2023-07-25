@@ -3,6 +3,8 @@ uniform vec3 uSurfaceColor;
 uniform float uColorOffset;
 uniform float uColorMulitiplier;
 
+
+
 varying float vElevation;
 
 void main() {
