@@ -2,6 +2,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import * as dat from "lil-gui";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 
 /**
  * Base
@@ -106,7 +108,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.set(4, 1, -4);
 scene.add(camera);
@@ -129,6 +131,13 @@ renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 1.5;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const effectComposer = new EffectComposer(renderer);
+effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+effectComposer.setSize(sizes.width, sizes.height);
+
+const renderPass = new RenderPass(scene, camera);
+effectComposer.addPass(renderPass);
 
 /**
  * Animate
