@@ -1,10 +1,14 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import * as dat from "lil-gui";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
-
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { DotScreenPass } from "three/addons/postprocessing/DotScreenPass.js";
+import { GlitchPass } from "three/addons/postprocessing/GlitchPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { RGBShiftShader } from "three/addons/shaders/RGBShiftShader.js";
+import { GammaCorrectionShader } from "three/addons/shaders/GammaCorrectionShader.js";
 /**
  * Base
  */
@@ -98,6 +102,9 @@ window.addEventListener("resize", () => {
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  effectComposer.setSize(sizes.width, sizes.height);
+  effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 /**
@@ -129,6 +136,7 @@ renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.useLegacyLights = false;
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 1.5;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -138,6 +146,22 @@ effectComposer.setSize(sizes.width, sizes.height);
 
 const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
+
+const dotScreenPass = new DotScreenPass();
+dotScreenPass.enabled = false;
+effectComposer.addPass(dotScreenPass);
+
+const glitchPass = new GlitchPass();
+// glitchPass.goWild = true;
+glitchPass.enabled = true;
+effectComposer.addPass(glitchPass);
+
+const rgbShiftPass = new ShaderPass(RGBShiftShader);
+rgbShiftPass.enabled = false;
+effectComposer.addPass(rgbShiftPass);
+
+const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader);
+effectComposer.addPass(gammaCorrectionPass);
 
 /**
  * Animate
@@ -151,7 +175,7 @@ const tick = () => {
   controls.update();
 
   // Render
-  renderer.render(scene, camera);
+  effectComposer.render();
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
