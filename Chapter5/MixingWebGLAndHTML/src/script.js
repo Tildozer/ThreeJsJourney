@@ -11,7 +11,7 @@ const loadingManager = new THREE.LoadingManager(
   // Loaded
   () => {
     // Wait a little
-    window.setTimeout(() => {
+    setTimeout(() => {
       // Animate overlay
       gsap.to(overlayMaterial.uniforms.uAlpha, {
         duration: 3,
@@ -30,7 +30,7 @@ const loadingManager = new THREE.LoadingManager(
     // Calculate the progress and update the loadingBarElement
     const progressRatio = itemsLoaded / itemsTotal;
     loadingBarElement.style.transform = `scaleX(${progressRatio})`;
-  }
+  },
 );
 const gltfLoader = new GLTFLoader(loadingManager);
 const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager);
@@ -124,6 +124,16 @@ gltfLoader.load("/models/DamagedHelmet/glTF/DamagedHelmet.gltf", (gltf) => {
 });
 
 /**
+ * Points of Interest
+ */
+const points = [
+  {
+    position: new THREE.Vector3(1.55, 0.3, -0.6),
+    element: document.querySelector(".point-0"),
+  },
+];
+
+/**
  * Lights
  */
 const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
@@ -164,7 +174,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.set(4, 1, -4);
 scene.add(camera);
@@ -194,6 +204,15 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const tick = () => {
   // Update controls
   controls.update();
+
+  for (const point of points) {
+    const screenPosition = point.position.clone();
+    screenPosition.project(camera);
+
+    const translateX = screenPosition.x * sizes.width * 0.5;
+    // console.log(translateX)
+    point.element.style.transform = `translateX(${translateX}px)`;
+  }
 
   // Render
   renderer.render(scene, camera);
