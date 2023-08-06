@@ -521,3 +521,17 @@ openGl Documentation sites
 ### 5.1: **Post-Processing**
 
 [EffectComposure](https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer)
+
+### 5.2: **Performance Tips**
+
+[How to dispose of objects](https://threejs.org/docs/#manual/en/introduction/How-to-dispose-of-objects)
+
+[InstancedMesh](https://threejs.org/docs/#api/en/objects/InstancedMesh)
+
+    A special version of Mesh with instanced rendering support.
+    Use InstancedMesh if you have to render a large number of objects with the same geometry and material but with different world transformations.
+    The usage of InstancedMesh will help you to reduce the number of draw calls and thus improve the overall rendering performance in your application.
+
+[Matrix4](https://threejs.org/docs/#api/en/math/Matrix4)
+
+    A class representing a 4x4 matrix.
