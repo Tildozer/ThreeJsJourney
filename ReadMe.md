@@ -490,10 +490,10 @@
 
 [how to dispose of objects](https://threejs.org/docs/#manual/en/introduction/How-to-dispose-of-objects)
 
-
 ## Chapter 4
 
 ### 4.1: **Shaders**
+
 openGl Documentation sites
 
 >[Shaderific](https://shaderific.com/glsl.html)
@@ -502,12 +502,22 @@ openGl Documentation sites
 >
 >[TheBookOfShaders](https://thebookofshaders.com/)
 
-### 4.2 :**ShaderPatterns**
+### 4.2: **ShaderPatterns**
 
 [GLSL Noise Algorithms(gist)](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
 
 [The Book Of Shaders (random)](https://thebookofshaders.com/10/)
 
-### 4.3 **animated galaxy**
+### 4.3: **animated galaxy**
 
 [Arc-tangent](https://thebookofshaders.com/glossary/?search=atan)
+
+### 4.4: **Modified material**
+
+[2D Matrices](https://thebookofshaders.com/08/)
+
+## Chapter 5
+
+### 5.1: **Post-Processing**
+
+[EffectComposure](https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer)
