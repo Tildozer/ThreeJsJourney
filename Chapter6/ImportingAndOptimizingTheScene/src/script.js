@@ -32,15 +32,38 @@ dracoLoader.setDecoderPath("draco/");
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
-/**
- * Object
- */
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1),
-  new THREE.MeshBasicMaterial()
-);
+const bakedTexture = textureLoader.load("portal.jpg");
+bakedTexture.flipY = false;
+bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-scene.add(cube);
+const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
+const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
+
+/**
+ * Model
+ */
+gltfLoader.load("portal.glb", (gltf) => {
+  gltf.scene.traverse((child) => (child.material = bakedMaterial));
+  const poleLightAMesh = gltf.scene.children.find(
+    (child) => child.name === "glassA",
+  );
+  const poleLightBMesh = gltf.scene.children.find(
+    (child) => child.name === "glassB",
+  );
+  const portalAMesh = gltf.scene.children.find(
+    (child) => child.name === "portalLightA",
+  );
+  const portalBMesh = gltf.scene.children.find(
+    (child) => child.name === "portalLightB",
+  );
+
+  poleLightAMesh.material = poleLightMaterial;
+  poleLightBMesh.material = poleLightMaterial;
+  portalAMesh.material = poleLightMaterial;
+  portalBMesh.material = poleLightMaterial;
+  // console.log(poleLightAMesh, poleLightBMesh, portalAMesh, portalBMesh);
+  scene.add(gltf.scene);
+});
 
 /**
  * Sizes
@@ -72,7 +95,7 @@ const camera = new THREE.PerspectiveCamera(
   45,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.x = 4;
 camera.position.y = 2;
