@@ -1,10 +1,12 @@
 import "./style.css";
 import ReactDOM from "react-dom/client";
+import { Canvas } from "@react-three/fiber";
+import { Experience } from "./Components";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
 root.render(
-  <>
-    <div>Soon to be a badass R3F application</div>
-  </>
+    <Canvas>
+      <Experience />
+    </Canvas>
 );
