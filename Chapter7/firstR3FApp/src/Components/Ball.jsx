@@ -4,7 +4,7 @@ const Ball = () => {
   return (
     <mesh position={[-2, 0, 0]}>
       <sphereGeometry />
-      <meshBasicMaterial color={"orange"} />
+      <meshStandardMaterial color={"orange"} />
     </mesh>
   );
 };

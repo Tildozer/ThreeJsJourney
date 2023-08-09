@@ -1,16 +1,32 @@
-import React from "react";
-import { Ball, Floor } from ".";
+import React, { useRef } from "react";
+import { Ball, Box, Floor } from ".";
+import { extend, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+extend({ OrbitControls });
 
 const Experience = () => {
+  const {camera, gl} = useThree()
+  const cubeRef = useRef();
+  const groupRef = useRef();
+
+  useFrame((state, delta) => {
+    cubeRef.current.rotation.y += delta;
+
+    // groupRef.current.rotation.y += delta;
+    // console.log("tick");
+  });
   return (
     <>
+      <directionalLight position={[ 1, 2, 3]} />
+      <ambientLight intensity={ 0.3 } />
+
+      <orbitControls args={[camera, gl.domElement]}/>
+      <group ref={groupRef}>
+        <Ball />
+        <Box refrence={cubeRef} />
+      </group>
       <Floor />
-      <Ball />
-      <mesh rotation-y={Math.PI * 0.25} position={[2, 0, 0]} scale={1.5}>
-        {/* <sphereGeometry args={[1.5, 32, 32]} /> */}
-        <boxGeometry scale={1.5} />
-        <meshBasicMaterial color="mediumpurple" />
-      </mesh>
     </>
   );
 };

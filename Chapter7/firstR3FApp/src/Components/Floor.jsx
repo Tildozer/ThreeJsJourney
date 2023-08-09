@@ -4,7 +4,7 @@ const Floor = () => {
   return (
     <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, -1, 0]} scale={10}>
       <planeGeometry />
-      <meshStandardMaterial />
+      <meshStandardMaterial color={"greenyellow"} />
     </mesh>
   );
 };
