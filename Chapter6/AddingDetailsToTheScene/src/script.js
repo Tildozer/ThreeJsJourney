@@ -3,11 +3,16 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import firfliesVertexShader from "./Shaders/fireflies/vertex.glsl";
+import firfliesFragmentShader from "./Shaders/fireflies/fragment.glsl";
+import portalVertexShader from "./Shaders/portal/vertex.glsl";
+import portalFragmentShader from "./Shaders/portal/fragment.glsl";
 
 /**
  * Base
  */
 // Debug
+const debugObject = {};
 const gui = new dat.GUI({
   width: 400,
 });
@@ -35,7 +40,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 /**
  * Textures
  */
-const bakedTexture = textureLoader.load("baked.jpg");
+const bakedTexture = textureLoader.load("portal.jpg");
 bakedTexture.flipY = false;
 bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -49,32 +54,89 @@ const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
 const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
 
 // Portal light material
-const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffc5});
 
 /**
  * Model
  */
-gltfLoader.load("portal.glb", (gltf) => {
+gltfLoader.load("portalBaked.glb", (gltf) => {
   scene.add(gltf.scene);
 
   // Get each object
-  const bakedMesh = gltf.scene.children.find((child) => child.name === "baked");
-  const portalLightMesh = gltf.scene.children.find(
-    (child) => child.name === "portalLight"
+  const bakedMesh = gltf.scene.children.find(
+    (child) => child.name === "portal",
+  );
+  const portalLightAMesh = gltf.scene.children.find(
+    (child) => child.name === "portalLightA",
+  );
+  const portalLightBMesh = gltf.scene.children.find(
+    (child) => child.name === "portalLightB",
   );
   const poleLightAMesh = gltf.scene.children.find(
-    (child) => child.name === "poleLightA"
+    (child) => child.name === "glassA",
   );
   const poleLightBMesh = gltf.scene.children.find(
-    (child) => child.name === "poleLightB"
+    (child) => child.name === "glassB",
   );
 
   // Apply materials
   bakedMesh.material = bakedMaterial;
-  portalLightMesh.material = portalLightMaterial;
+  portalLightAMesh.material = portalLightMaterial;
+  portalLightBMesh.material = portalLightMaterial;
   poleLightAMesh.material = poleLightMaterial;
   poleLightBMesh.material = poleLightMaterial;
 });
+
+
+/**
+ * FireFlies
+ */
+const fireFliesGeometry = new THREE.BufferGeometry();
+const fireFliesCount = 30;
+const positionArray = new Float32Array(fireFliesCount * 3);
+const scaleArray = new Float32Array(fireFliesCount);
+
+for (let i = 0; i < fireFliesCount; i++) {
+  positionArray[i * 3] = (Math.random() - 0.5) * 4;
+  positionArray[i * 3 + 1] = Math.random() * 1.5;
+  positionArray[i * 3 + 2] = (Math.random() - 0.5) * 4;
+
+  scaleArray[i] = Math.random();
+}
+
+fireFliesGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(positionArray, 3),
+);
+fireFliesGeometry.setAttribute(
+  "aScale",
+  new THREE.BufferAttribute(scaleArray, 1),
+);
+
+// const fireFliesMaterial = new THREE.PointsMaterial({size: 0.1, sizeAttenuation: true});
+const fireFliesMaterial = new THREE.ShaderMaterial({
+  uniforms: {
+    uTime: {value: 0},
+    uPointSize: { value: 250 },
+    uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+  },
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  vertexShader: firfliesVertexShader,
+  fragmentShader: firfliesFragmentShader,
+});
+
+gui
+  .add(fireFliesMaterial.uniforms.uPointSize, "value")
+  .min(40)
+  .max(500)
+  .step(1)
+  .name("fireflieSize");
+
+const fireFlies = new THREE.Points(fireFliesGeometry, fireFliesMaterial);
+
+scene.add(fireFlies);
 
 /**
  * Sizes
@@ -96,6 +158,11 @@ window.addEventListener("resize", () => {
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  fireFliesMaterial.uniforms.uPixelRatio.value = Math.min(
+    window.devicePixelRatio,
+    2,
+  );
 });
 
 /**
@@ -106,7 +173,7 @@ const camera = new THREE.PerspectiveCamera(
   45,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.x = 4;
 camera.position.y = 2;
@@ -127,6 +194,12 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+debugObject.clearColor = 0x200909;
+renderer.setClearColor(debugObject.clearColor);
+gui
+  .addColor(debugObject, "clearColor")
+  .onChange(() => renderer.setClearColor(debugObject.clearColor));
+
 /**
  * Animate
  */
@@ -134,6 +207,8 @@ const clock = new THREE.Clock();
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  fireFliesMaterial.uniforms.uTime.value = elapsedTime;
 
   // Update controls
   controls.update();
