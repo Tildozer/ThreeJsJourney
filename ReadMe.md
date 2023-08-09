@@ -535,3 +535,15 @@ openGl Documentation sites
 [Matrix4](https://threejs.org/docs/#api/en/math/Matrix4)
 
     A class representing a 4x4 matrix.
+
+## Chapter 7
+
+### 6.1 **ReactThreeFiber**
+
+>React-Three-Fiber Links
+>
+>[Github](https://github.com/pmndrs/react-three-fiber)
+>
+>[Website](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+>
+>[Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
