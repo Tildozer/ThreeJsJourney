@@ -6,7 +6,7 @@ import { Experience } from "./Components";
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
 root.render(
-    <Canvas>
-      <Experience />
-    </Canvas>
+  <Canvas>
+    <Experience />
+  </Canvas>,
 );
