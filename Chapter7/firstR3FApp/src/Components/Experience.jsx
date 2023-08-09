@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { Ball, Box, Floor } from ".";
+import { Ball, Box, Floor, CustomObject } from ".";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 extend({ OrbitControls });
 
 const Experience = () => {
-  const {camera, gl} = useThree()
+  const { camera, gl } = useThree();
   const cubeRef = useRef();
   const groupRef = useRef();
 
@@ -18,10 +18,10 @@ const Experience = () => {
   });
   return (
     <>
-      <directionalLight position={[ 1, 2, 3]} />
-      <ambientLight intensity={ 0.3 } />
-
-      <orbitControls args={[camera, gl.domElement]}/>
+      <directionalLight position={[1, 2, 3]} />
+      <ambientLight intensity={0.3} />
+      <CustomObject />
+      <orbitControls args={[camera, gl.domElement]} />
       <group ref={groupRef}>
         <Ball />
         <Box refrence={cubeRef} />
