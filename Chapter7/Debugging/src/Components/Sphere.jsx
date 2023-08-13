@@ -1,8 +1,8 @@
 import React from "react";
 
-const Sphere = () => {
+const Sphere = ({ position }) => {
   return (
-    <mesh position-x={-2}>
+    <mesh position={[position.x, position.y, position.z]}>
       <sphereGeometry />
       <meshStandardMaterial color="orange" />
     </mesh>

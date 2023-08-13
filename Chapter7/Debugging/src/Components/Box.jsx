@@ -1,10 +1,10 @@
 import React from "react";
 
-const Box = () => {
+const Box = ({color}) => {
   return (
     <mesh position-x={2} scale={1.5}>
       <boxGeometry />
-      <meshStandardMaterial color="mediumpurple" />
+      <meshStandardMaterial color={color}/>
     </mesh>
   );
 };
