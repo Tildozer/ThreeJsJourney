@@ -538,7 +538,7 @@ openGl Documentation sites
 
 ## Chapter 7
 
-### 6.1 **ReactThreeFiber**
+### 7.1 **ReactThreeFiber**
 
 >React-Three-Fiber Links
 >
@@ -547,3 +547,21 @@ openGl Documentation sites
 >[Website](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
 >
 >[Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
+
+### 7.2 **First R3F App**
+
+[Getting started](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+
+[Scaling performance](https://docs.pmnd.rs/react-three-fiber/advanced/scaling-performance#instancing)
+
+### 7.3 **R3F and Drei**
+
+[2D SDF functions](https://iquilezles.org/articles/distfunctions2d/)
+
+[3D SDF functions](https://iquilezles.org/articles/distfunctions/)
+
+### 7.4 **Debugging a R3F app**
+
+[Leva](https://github.com/pmndrs/leva)
+
+[r3f-perf](https://github.com/utsuboco/r3f-perf)
