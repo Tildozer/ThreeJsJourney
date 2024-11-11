@@ -33,7 +33,7 @@ const contactMaterial = new CANNON.ContactMaterial(
   {
     friction: 0.1,
     restitution: 0.7,
-  }
+  },
 );
 
 world.addContactMaterial(contactMaterial);
@@ -116,7 +116,7 @@ const floor = new THREE.Mesh(
     roughness: 0.4,
     envMap: environmentMapTexture,
     envMapIntensity: 0.5,
-  })
+  }),
 );
 floor.receiveShadow = true;
 floor.rotation.x = -Math.PI * 0.5;
@@ -169,7 +169,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.set(-3, 3, 3);
 scene.add(camera);
@@ -236,7 +236,7 @@ const createBox = (width, height, depth, position) => {
 
   // CannonJS Body
   const shape = new CANNON.Box(
-    new CANNON.Vec3(width * 0.5, height * 0.5, depth * 0.5)
+    new CANNON.Vec3(width * 0.5, height * 0.5, depth * 0.5),
   );
   const body = new CANNON.Body({
     mass: 1,

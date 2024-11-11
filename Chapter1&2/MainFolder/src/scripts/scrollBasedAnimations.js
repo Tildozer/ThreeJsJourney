@@ -74,7 +74,7 @@ for (let i = 0; i < particleCounts; i++) {
 const particleGeometry = new THREE.BufferGeometry();
 particleGeometry.setAttribute(
   "position",
-  new THREE.BufferAttribute(positions, 3)
+  new THREE.BufferAttribute(positions, 3),
 );
 
 // Material
@@ -128,7 +128,7 @@ const camera = new THREE.PerspectiveCamera(
   35,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.z = 6;
 cameraGroup.add(camera);

@@ -40,7 +40,7 @@ const spotLight = new THREE.SpotLight(
   10,
   Math.PI * 0.1,
   0.25,
-  1
+  1,
 );
 spotLight.position.set(0, 2, 3);
 scene.add(spotLight);
@@ -56,7 +56,7 @@ scene.add(spotLight.target);
 
 const directionalLightHelper = new THREE.DirectionalLightHelper(
   directionalLight,
-  0.2
+  0.2,
 );
 
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2);
@@ -69,7 +69,7 @@ scene.add(
   directionalLightHelper,
   pointLightHelper,
   spotLightHelper,
-  rectAreaLightHelper
+  rectAreaLightHelper,
 );
 
 /**
@@ -87,7 +87,7 @@ const cube = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.75, 0.75), material);
 
 const torus = new THREE.Mesh(
   new THREE.TorusGeometry(0.3, 0.2, 32, 64),
-  material
+  material,
 );
 torus.position.x = 1.5;
 
@@ -127,7 +127,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.x = 1;
 camera.position.y = 1;

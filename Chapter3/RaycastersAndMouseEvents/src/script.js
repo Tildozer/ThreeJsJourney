@@ -42,18 +42,18 @@ scene.add(directionalLight);
  */
 const object1 = new THREE.Mesh(
   new THREE.SphereGeometry(0.5, 16, 16),
-  new THREE.MeshBasicMaterial({ color: "#ff0000" })
+  new THREE.MeshBasicMaterial({ color: "#ff0000" }),
 );
 object1.position.x = -2;
 
 const object2 = new THREE.Mesh(
   new THREE.SphereGeometry(0.5, 16, 16),
-  new THREE.MeshBasicMaterial({ color: "#ff0000" })
+  new THREE.MeshBasicMaterial({ color: "#ff0000" }),
 );
 
 const object3 = new THREE.Mesh(
   new THREE.SphereGeometry(0.5, 16, 16),
-  new THREE.MeshBasicMaterial({ color: "#ff0000" })
+  new THREE.MeshBasicMaterial({ color: "#ff0000" }),
 );
 object3.position.x = 2;
 
@@ -125,7 +125,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.z = 3;
 scene.add(camera);

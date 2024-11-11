@@ -34,7 +34,7 @@ const spotLight = new THREE.SpotLight(0xffffff, 0.3, 10, Math.PI * 0.3);
 spotLight.castShadow = true;
 spotLight.shadow.mapSize.width = 1024;
 spotLight.shadow.mapSize.height = 1024;
-spotLight.shadow.camera.fov = 30
+spotLight.shadow.camera.fov = 30;
 spotLight.shadow.camera.near = 1;
 spotLight.shadow.camera.far = 6;
 
@@ -58,8 +58,9 @@ directionalLight.shadow.camera.near = 1;
 directionalLight.shadow.camera.far = 6;
 // directionalLight.shadow.radius = 10;
 
-
-const directionalLightCameraHelper =  new THREE.CameraHelper(directionalLight.shadow.camera);
+const directionalLightCameraHelper = new THREE.CameraHelper(
+  directionalLight.shadow.camera,
+);
 directionalLightCameraHelper.visible = false;
 
 // PointLight
@@ -71,7 +72,6 @@ pointLight.shadow.mapSize.height = 1024;
 pointLight.shadow.camera.near = 0.1;
 pointLight.shadow.camera.far = 5;
 
-
 const pointLightCameraHelper = new THREE.CameraHelper(pointLight.shadow.camera);
 pointLightCameraHelper.visible = false;
 scene.add(pointLight, pointLightCameraHelper);
@@ -81,7 +81,13 @@ gui.add(directionalLight.position, "x").min(-5).max(5).step(0.001);
 gui.add(directionalLight.position, "y").min(-5).max(5).step(0.001);
 gui.add(directionalLight.position, "z").min(-5).max(5).step(0.001);
 
-scene.add(directionalLight, spotLight, spotLight.target, spotLightHelper, directionalLightCameraHelper,);
+scene.add(
+  directionalLight,
+  spotLight,
+  spotLight.target,
+  spotLightHelper,
+  directionalLightCameraHelper,
+);
 
 /**
  * Materials
@@ -103,24 +109,21 @@ const sphereShadow = new THREE.Mesh(
     color: 0x000000,
     alphaMap: simpleShadow,
     transparent: true,
-  })
+  }),
 );
 
-const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(5, 5), 
-    material
-    );
-    plane.rotation.x = -Math.PI * 0.5;
-    plane.position.y = -0.5;
-    
-    plane.receiveShadow = true;
-    
-    sphereShadow.rotation.x = -Math.PI * 0.5;
-    sphereShadow.position.y = plane.position.y + 0.01;
-    scene.add(sphere, sphereShadow, plane);
-    
-    /**
-     * Sizes
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), material);
+plane.rotation.x = -Math.PI * 0.5;
+plane.position.y = -0.5;
+
+plane.receiveShadow = true;
+
+sphereShadow.rotation.x = -Math.PI * 0.5;
+sphereShadow.position.y = plane.position.y + 0.01;
+scene.add(sphere, sphereShadow, plane);
+
+/**
+ * Sizes
  */
 const sizes = {
   width: window.innerWidth,
@@ -149,7 +152,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.x = 1;
 camera.position.y = 1;
@@ -185,7 +188,7 @@ const tick = () => {
   sphere.position.x = Math.cos(elapsedTime) * 1.5;
   sphere.position.z = Math.sin(elapsedTime) * 1.5;
   sphere.position.y = Math.abs(Math.sin(elapsedTime * 3));
-//   Update Shadows
+  //   Update Shadows
   sphereShadow.position.x = sphere.position.x;
   sphereShadow.position.z = sphere.position.z;
   sphereShadow.material.opacity = (1 - Math.abs(sphere.position.y)) * 0.3;

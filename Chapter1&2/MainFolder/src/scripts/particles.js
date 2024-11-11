@@ -36,7 +36,7 @@ for (let i = 0; i < count * 3; i++) {
 
 particlesGeometry.setAttribute(
   "position",
-  new THREE.BufferAttribute(particlesPositions, 3)
+  new THREE.BufferAttribute(particlesPositions, 3),
 );
 particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
@@ -87,7 +87,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.z = 3;
 scene.add(camera);
@@ -124,7 +124,7 @@ const tick = () => {
     // unoptimized way of doing this
     const x = particlesGeometry.attributes.position.array[i3];
     particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(
-      elapsedTime + x
+      elapsedTime + x,
     );
   }
 

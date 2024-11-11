@@ -54,7 +54,7 @@ const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
 const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
 
 // Portal light material
-const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffc5});
+const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffc5 });
 
 /**
  * Model
@@ -87,7 +87,6 @@ gltfLoader.load("portalBaked.glb", (gltf) => {
   poleLightBMesh.material = poleLightMaterial;
 });
 
-
 /**
  * FireFlies
  */
@@ -116,7 +115,7 @@ fireFliesGeometry.setAttribute(
 // const fireFliesMaterial = new THREE.PointsMaterial({size: 0.1, sizeAttenuation: true});
 const fireFliesMaterial = new THREE.ShaderMaterial({
   uniforms: {
-    uTime: {value: 0},
+    uTime: { value: 0 },
     uPointSize: { value: 250 },
     uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
   },

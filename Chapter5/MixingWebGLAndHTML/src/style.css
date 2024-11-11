@@ -42,7 +42,7 @@ body {
   opacity: 1;
 }
 
-.point.visible .label{
+.point.visible .label {
   transform: scale(1, 1);
 }
 
@@ -60,7 +60,7 @@ body {
   text-align: center;
   line-height: 2.4rem;
   font-weight: 100;
-  font-size: .8rem;
+  font-size: 0.8rem;
   transform: scale(0, 0);
   transition: transform 0.3s;
 }
@@ -71,7 +71,7 @@ body {
   top: 2.4rem;
   left: -7rem;
   padding: 1.2rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background: #00000077;
   border: 1px solid #ffffff77;
   width: 13rem;
@@ -81,6 +81,6 @@ body {
   text-align: center;
   opacity: 0;
   font-weight: 100;
-  font-size: .8rem;
+  font-size: 0.8rem;
   transition: opacity 0.3s;
 }

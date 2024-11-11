@@ -1,6 +1,6 @@
 # ThreeJs Journey
 
-## **Chapter 1**: *Basics*
+## **Chapter 1**: _Basics_
 
 ### 1.1: **First Scene**
 
@@ -85,7 +85,7 @@
 
 [Camera](https://threejs.org/docs/#api/en/cameras/Camera)
 
-    Abstract base class for cameras. 
+    Abstract base class for cameras.
     This class should always be inherited when you build a new camera.
 
 [ArrayCamera](https://threejs.org/docs/#api/en/cameras/ArrayCamera)
@@ -189,7 +189,7 @@
     A class for generating a Dodecahedron geometries
 
 [OctahedronGeometry](https://threejs.org/docs/#api/en/geometries/OctahedronGeometry)
-    A class for generating an octahedron geometries
+A class for generating an octahedron geometries
 
 [TetraheadronGeometry](https://threejs.org/docs/#api/en/geometries/TetrahedronGeometry)
 
@@ -332,7 +332,7 @@
 
     Represents an axis-aligned bounding box (AABB) in 3D space.
 
-## ***Chapter 2:***
+## **_Chapter 2:_**
 
 ### 2.1: Lights
 
@@ -392,40 +392,39 @@
     This class is designed to assist with raycasting.
     Raycasting is used for mouse picking (working out what objects in the 3d space the mouse is over) amongst other things.
 
->#### **Physics Libraries**
+> #### **Physics Libraries**
 >
->- *[cannon.js](https://schteppe.github.io/cannon.js/)*
+> - _[cannon.js](https://schteppe.github.io/cannon.js/)_
 >
->> [repository](https://github.com/schteppe/cannon.js)
->>
->> [documentation](http://schteppe.github.io/cannon.js/docs/)
->>>
->>> ##### **Updated Branch** cannon.js
->>>
->>> [repository](https://github.com/pmndrs/cannon-es)
->>>
->>> [documentation](https://pmndrs.github.io/cannon-es/docs/)
+> > [repository](https://github.com/schteppe/cannon.js)
+> >
+> > [documentation](http://schteppe.github.io/cannon.js/docs/)
+> >
+> > > ##### **Updated Branch** cannon.js
+> > >
+> > > [repository](https://github.com/pmndrs/cannon-es)
+> > >
+> > > [documentation](https://pmndrs.github.io/cannon-es/docs/)
 >
->- *[oimo.js](https://lo-th.github.io/Oimo.js/#basic)*
+> - _[oimo.js](https://lo-th.github.io/Oimo.js/#basic)_
 >
->> [repository](https://github.com/lo-th/Oimo.js)
->>
->> [documentation](http://lo-th.github.io/Oimo.js/docs.html#world)
+> > [repository](https://github.com/lo-th/Oimo.js)
+> >
+> > [documentation](http://lo-th.github.io/Oimo.js/docs.html#world)
 >
->#### **2D physics Frameworks**
+> #### **2D physics Frameworks**
 >
->- *[Matter.js](https://brm.io/matter-js/)*
+> - _[Matter.js](https://brm.io/matter-js/)_
 >
->> [repository](https://github.com/liabru/matter-js)
->>
->>[documentation](https://brm.io/matter-js/docs/)
+> > [repository](https://github.com/liabru/matter-js)
+> >
+> > [documentation](https://brm.io/matter-js/docs/)
 >
->- *[Plack.js](https://piqnt.com/planck.js)*
+> - _[Plack.js](https://piqnt.com/planck.js)_
 >
->> [repository](https://github.com/piqnt/planck.js)
->>
->>[documentation](https://github.com/piqnt/planck.js/tree/master/docs)
->
+> > [repository](https://github.com/piqnt/planck.js)
+> >
+> > [documentation](https://github.com/piqnt/planck.js/tree/master/docs)
 
 ### 3.2: **Imported models**
 
@@ -496,11 +495,11 @@
 
 openGl Documentation sites
 
->[Shaderific](https://shaderific.com/glsl.html)
+> [Shaderific](https://shaderific.com/glsl.html)
 >
->[learnopengl](https://learnopengl.com/Getting-started/OpenGL)
+> [learnopengl](https://learnopengl.com/Getting-started/OpenGL)
 >
->[TheBookOfShaders](https://thebookofshaders.com/)
+> [TheBookOfShaders](https://thebookofshaders.com/)
 
 ### 4.2: **ShaderPatterns**
 
@@ -540,13 +539,13 @@ openGl Documentation sites
 
 ### 7.1 **ReactThreeFiber**
 
->React-Three-Fiber Links
+> React-Three-Fiber Links
 >
->[Github](https://github.com/pmndrs/react-three-fiber)
+> [Github](https://github.com/pmndrs/react-three-fiber)
 >
->[Website](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+> [Website](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
 >
->[Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
+> [Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
 
 ### 7.2 **First R3F App**
 

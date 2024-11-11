@@ -22,7 +22,6 @@ root.render(
     }}
     // onCreated={created}
   >
-
     <Experience />
-  </Canvas>
+  </Canvas>,
 );

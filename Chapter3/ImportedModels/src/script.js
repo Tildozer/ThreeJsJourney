@@ -43,7 +43,7 @@ const floor = new THREE.Mesh(
     color: "#444444",
     metalness: 0,
     roughness: 0.5,
-  })
+  }),
 );
 floor.receiveShadow = true;
 floor.rotation.x = -Math.PI * 0.5;
@@ -96,7 +96,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.set(2, 2, 2);
 scene.add(camera);

@@ -32,7 +32,7 @@ const scene = new THREE.Scene();
 // Object
 const mesh = new THREE.Mesh(
   new THREE.BoxGeometry(1, 1, 1, 5, 5, 5),
-  new THREE.MeshBasicMaterial({ color: 0xff0000 })
+  new THREE.MeshBasicMaterial({ color: 0xff0000 }),
 );
 scene.add(mesh);
 
@@ -41,7 +41,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 // OrthographicCamera
 // const aspectRatio = sizes.width/ sizes.height;

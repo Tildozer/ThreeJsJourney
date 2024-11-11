@@ -96,7 +96,7 @@ directionalLightFolder.close();
 // light Helper
 
 const directionalLightHelper = new THREE.CameraHelper(
-  directionalLight.shadow.camera
+  directionalLight.shadow.camera,
 );
 scene.add(directionalLightHelper);
 
@@ -125,13 +125,13 @@ gltfLoader.load("/models/hamburger.glb", (gltf) => {
  */
 
 const floorARM = textureLoader.load(
-  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_arm_1k.jpg"
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_arm_1k.jpg",
 );
 const floorDiff = textureLoader.load(
-  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_diff_1k.jpg"
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_diff_1k.jpg",
 );
 const floorNorm = textureLoader.load(
-  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_nor_gl_1k.png"
+  "/textures/wood_cabinet_worn_long/wood_cabinet_worn_long_nor_gl_1k.png",
 );
 
 floorDiff.colorSpace = THREE.SRGBColorSpace;
@@ -144,7 +144,7 @@ const floor = new THREE.Mesh(
     aoMap: floorARM,
     roughnessMap: floorARM,
     metalnessMap: floorARM,
-  })
+  }),
 );
 
 floor.rotation.x = -Math.PI * 0.5;
@@ -155,13 +155,13 @@ scene.add(floor);
  * Background
  */
 const brickARM = textureLoader.load(
-  "/textures/castle_brick_broken_06/castle_brick_broken_06_arm_1k.jpg"
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_arm_1k.jpg",
 );
 const brickDiff = textureLoader.load(
-  "/textures/castle_brick_broken_06/castle_brick_broken_06_diff_1k.jpg"
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_diff_1k.jpg",
 );
 const brickNorm = textureLoader.load(
-  "/textures/castle_brick_broken_06/castle_brick_broken_06_nor_gl_1k.png"
+  "/textures/castle_brick_broken_06/castle_brick_broken_06_nor_gl_1k.png",
 );
 brickDiff.colorSpace = THREE.SRGBColorSpace;
 
@@ -173,7 +173,7 @@ const brickBackground = new THREE.Mesh(
     aoMap: brickARM,
     roughnessMap: brickARM,
     metalnessMap: brickARM,
-  })
+  }),
 );
 
 brickBackground.position.y = 4;
@@ -210,7 +210,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.set(4, 5, 4);
 scene.add(camera);

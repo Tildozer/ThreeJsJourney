@@ -1,9 +1,9 @@
-import react from 'react';
-import { Environment as Env, Lightformer } from '@react-three/drei';
+import react from "react";
+import { Environment as Env, Lightformer } from "@react-three/drei";
 
-const Environment = ({envMapSettings}) => {
+const Environment = ({ envMapSettings }) => {
   return (
-    <Env 
+    <Env
       // files={"./environmentMaps/the_sky_is_on_fire_2k.hdr"}
       preset="night"
       ground={{
@@ -11,7 +11,6 @@ const Environment = ({envMapSettings}) => {
         radius: envMapSettings.envMapRadius,
         scale: envMapSettings.envMapScale,
       }}
-
     >
       {/* <color args={['#000000']} attach="background"/> */}
       {/* <Lightformer 
@@ -25,9 +24,8 @@ const Environment = ({envMapSettings}) => {
         <planeGeometry />
         <meshBasicMaterial color={[10, 0, 0]} />
       </mesh> */}
-
     </Env>
   );
-}
+};
 
 export default Environment;

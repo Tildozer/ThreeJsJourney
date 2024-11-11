@@ -1,14 +1,14 @@
-import { useFrame, } from "@react-three/fiber";
-import { 
-  OrbitControls, 
-  useHelper, 
-  BakeShadows, 
-  // SoftShadows, 
+import { useFrame } from "@react-three/fiber";
+import {
+  OrbitControls,
+  useHelper,
+  BakeShadows,
+  // SoftShadows,
   // AccumulativeShadows,
   // RandomizedLight,
   ContactShadows,
   // Sky,
-  Stage
+  Stage,
 } from "@react-three/drei";
 import { useRef } from "react";
 import { Perf } from "r3f-perf";
@@ -19,7 +19,7 @@ import { useControls } from "leva";
 export default function Experience() {
   const cube = useRef();
   const directionalLight = useRef();
-  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, 'red');
+  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
   useFrame((state, delta) => {
     // const time = state.clock.getElapsedTime();
@@ -29,20 +29,19 @@ export default function Experience() {
 
   const { color, opacity, blur } = useControls("contact shadows", {
     color: "#1dBf75",
-    opacity: {value: 0.4, min: 0, max: 1},
-    blur: {value: 2.8, min: 0, max: 10},
-  }
-  );
+    opacity: { value: 0.4, min: 0, max: 1 },
+    blur: { value: 2.8, min: 0, max: 10 },
+  });
 
   // const {sunPosition} = useControls("Sky", {
   //   sunPosition: {value: [1, 2, 3], step: 0.1} , // not the normal way to set the sun position use spherical coordinates instead
   // });
 
   const envMapSettings = useControls("Environment", {
-    envMapIntensity: {value: 1, min: 0, max: 12},
-    envMapHeight: {value: 7, min: 0, max: 100},
-    envMapRadius: {value: 28, min: 10, max: 1000},
-    envMapScale: {value: 100, min: 10, max: 1000},
+    envMapIntensity: { value: 1, min: 0, max: 12 },
+    envMapHeight: { value: 7, min: 0, max: 100 },
+    envMapRadius: { value: 28, min: 10, max: 1000 },
+    envMapScale: { value: 100, min: 10, max: 1000 },
   });
 
   return (
@@ -58,7 +57,7 @@ export default function Experience() {
         rings={11} //
       /> */}
       {/* <color args={[ "ivory" ]} attach="background" /> */}
-      
+
       <Perf position="top-left" />
 
       <OrbitControls makeDefault />
@@ -113,10 +112,8 @@ export default function Experience() {
       {/* <Cube cube={cube} envMapIntensity={ envMapSettings.envMapIntensity} /> */}
       {/* <Sphere envMapIntensity={ envMapSettings.envMapIntensity} /> */}
 
-
-      
       <Stage
-        shadows={ {
+        shadows={{
           type: "contact",
           opacity: opacity,
           color: color,
@@ -126,8 +123,8 @@ export default function Experience() {
         preset="portrait"
         intensity={envMapSettings.envMapIntensity}
       >
-        <Cube cube={cube} envMapIntensity={ envMapSettings.envMapIntensity} />
-        <Sphere envMapIntensity={ envMapSettings.envMapIntensity} />
+        <Cube cube={cube} envMapIntensity={envMapSettings.envMapIntensity} />
+        <Sphere envMapIntensity={envMapSettings.envMapIntensity} />
       </Stage>
     </>
   );
