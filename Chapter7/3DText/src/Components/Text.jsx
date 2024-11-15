@@ -1,10 +1,11 @@
-import React from 'react'
-import { Text3D, Center } from '@react-three/drei'
+import React from "react";
+import { Text3D, Center, useMatcapTexture } from "@react-three/drei";
 
-const Text = () => {
+const Text = ({ material }) => {
   return (
     <Center>
-      <Text3D 
+      <Text3D
+        material={material}
         font="./fonts/helvetiker_regular.typeface.json"
         size={0.75}
         height={0.2}
@@ -16,10 +17,9 @@ const Text = () => {
         bevelSegments={5}
       >
         Hello World
-        <meshMatcapMaterial />
       </Text3D>
     </Center>
-  )
-}
+  );
+};
 
-export default Text
+export default Text;
