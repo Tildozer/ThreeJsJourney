@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef } from "react";
-import { Cube, Floor, Sphere } from "./components";
+import { Cube, Floor, Hamburger, Sphere } from "./components";
 
 export default function Experience() {
   const cube = useRef();
@@ -13,12 +13,14 @@ export default function Experience() {
   return (
     <>
       <OrbitControls makeDefault />
+      <color attach="background" args={["#000000"]} />
 
       <directionalLight position={[1, 2, 3]} intensity={4.5} />
       <ambientLight intensity={1.5} />
 
       <Sphere />
-      <Cube ref={cube} />
+      <Cube cube={cube} />
+      <Hamburger />
       <Floor />
     </>
   );
