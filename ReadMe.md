@@ -573,4 +573,32 @@ openGl Documentation sites
 
     The idea is to make the shadow look blurry by picking the shadow map texture at an offset position according to the distance between the surface casting the shadow and the surface receiving the shadow, which is kind of how it happens in real life.
 
-[GLTF To Component](https://gltf.pmnd.rs/)
+### 7.6 **Loading models in React Three Fiber**
+
+[GLTF To Component VIA website](https://gltf.pmnd.rs/)
+
+[GLTF to component command line tool](https://github.com/pmndrs/gltfjsx)
+
+[useAnimation](https://github.com/pmndrs/drei#useanimations)
+    helper from @react-three/drei to help you us animations on a model
+
+[animationAction](https://threejs.org/docs/?q=action#api/en/animation/AnimationAction)
+    AnimationActions schedule the performance of the animations which are stored in AnimationClips.
+
+    Note: Most of AnimationAction's methods can be chained.
+
+### 7.8 **Postprocessing**
+
+Post Processing
+    [Repository](https://github.com/pmndrs/postprocessing)
+
+    [Documentation](https://pmndrs.github.io/postprocessing/public/docs/)
+
+    [Demo Page](https://pmndrs.github.io/postprocessing/public/demo/)
+
+React-postprocessing
+    [Repository](https://github.com/pmndrs/react-postprocessing)
+
+    [Documentation](https://github.com/pmndrs/postprocessing#included-effects)
+
+    [Demo Page](https://docs.pmnd.rs/react-postprocessing/introduction)
