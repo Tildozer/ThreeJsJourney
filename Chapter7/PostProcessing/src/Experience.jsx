@@ -1,8 +1,9 @@
-import { OrbitControls, Sphere } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-import { Box, Floor } from "./components";
+import { Box, Floor, PostProcessing, Sphere } from "./components";
 
 export default function Experience() {
+
   return (
     <>
       <Perf position="top-left" />
@@ -11,9 +12,15 @@ export default function Experience() {
 
       <directionalLight castShadow position={[1, 2, 3]} intensity={4.5} />
       <ambientLight intensity={1.5} />
+      <color 
+        attach="background" 
+        args={["#000000"]} 
+      />
 
-      <Box />
+      <PostProcessing>
+      </PostProcessing>
       <Sphere />
+      <Box />
       <Floor />
     </>
   );
