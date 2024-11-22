@@ -14,7 +14,7 @@ export default function Experience() {
       <ambientLight intensity={1.5} />
       <color 
         attach="background" 
-        args={["#000000"]} 
+        color="white"
       />
 
       <PostProcessing>

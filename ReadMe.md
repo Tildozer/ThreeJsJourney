@@ -596,9 +596,13 @@ Post Processing
 
     [Demo Page](https://pmndrs.github.io/postprocessing/public/demo/)
 
+    [Custom Effects](https://github.com/pmndrs/postprocessing/wiki/Custom-Effects)
+
 React-postprocessing
     [Repository](https://github.com/pmndrs/react-postprocessing)
 
     [Documentation](https://github.com/pmndrs/postprocessing#included-effects)
 
     [Demo Page](https://docs.pmnd.rs/react-postprocessing/introduction)
+
+    [Custom Effects](https://docs.pmnd.rs/react-postprocessing/effects/custom-effects)
