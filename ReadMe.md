@@ -606,3 +606,11 @@ React-postprocessing
     [Demo Page](https://docs.pmnd.rs/react-postprocessing/introduction)
 
     [Custom Effects](https://docs.pmnd.rs/react-postprocessing/effects/custom-effects)
+
+### 7.9 **Laptop Scene**
+
+[React Spring](https://react-spring.dev/)
+    [Congifure reactSpring](https://react-spring.dev/docs/advanced/config#configs)
+
+[use-gesture](https://use-gesture.netlify.app/)
+    [touch actions](https://use-gesture.netlify.app/docs/extras/#touch-action)
