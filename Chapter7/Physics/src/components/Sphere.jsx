@@ -1,11 +1,17 @@
 import React from "react";
+import { RigidBody } from "@react-three/rapier";
 
 const Sphere = () => {
   return (
-    <mesh castShadow position={[-2, 2, 0]}>
-      <sphereGeometry />
-      <meshStandardMaterial color="orange" />
-    </mesh>
+    <RigidBody
+      colliders="ball"
+      // restitution={1}
+    >
+      <mesh castShadow position={[-1.5, 4, 0]}>
+        <sphereGeometry />
+        <meshStandardMaterial color="orange" />
+      </mesh>
+    </RigidBody>
   );
 };
 
