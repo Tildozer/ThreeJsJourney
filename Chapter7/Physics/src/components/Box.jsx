@@ -1,21 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
 import { movementEvent } from "./event";
 
 const Box = () => {
-  const [hitSound] = useState(() => new Audio("./hit.mp3"))
+  const [hitSound] = useState(() => new Audio("./hit.mp3"));
+
   const boxRef = useRef();
 
   const collisionEnter = () => {
-    // hitSound.currentTime = 0;
-    // hitSound.volume = Math.random();
-    // hitSound.play();
-  }
-  
-  useState(() => {
+    hitSound.currentTime = 0;
+    hitSound.volume = Math.random();
+    hitSound.play();
+  };
 
-   movementEvent(boxRef);
-  }, [])
+  useEffect(() => {
+    movementEvent(boxRef);
+  }, []);
 
   return (
     <RigidBody

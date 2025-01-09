@@ -1,7 +1,16 @@
 import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-import { Box, Floor, Hamburger, Rectangle, Sphere, Torus } from "./components";
-import { Physics, RigidBody } from "@react-three/rapier";
+import {
+  Box,
+  Cubes,
+  Floor,
+  Hamburger,
+  Rectangle,
+  Sphere,
+  Torus,
+  Walls,
+} from "./components";
+import { Physics } from "@react-three/rapier";
 
 export default function Experience() {
   return (
@@ -16,10 +25,12 @@ export default function Experience() {
       // debug
       // gravity={[0, -1.6, 0]}
       >
+        <Walls />
+        <Cubes />
         <Box />
         <Rectangle />
         <Sphere />
-        <Torus />
+        {/* <Torus /> */}
         <Hamburger />
         <Floor />
       </Physics>

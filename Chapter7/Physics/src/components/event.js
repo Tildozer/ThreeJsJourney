@@ -1,18 +1,18 @@
 const jump = (box) => {
-    const mass = box.current.mass();
-    box.current.applyImpulse({ x: 0, y: mass * 5, z: 0 }, true);
-    box.current.applyTorqueImpulse(
-      {
-        x: Math.random() - 0.5,
-        y: Math.random() - 0.5,
-        z: Math.random() - 0.5,
-      },
-      true,
-    );
-  };
+  const mass = box.current.mass();
+  box.current.applyImpulse({ x: 0, y: mass * 5, z: 0 }, true);
+  box.current.applyTorqueImpulse(
+    {
+      x: Math.random() - 0.5,
+      y: Math.random() - 0.5,
+      z: Math.random() - 0.5,
+    },
+    true,
+  );
+};
 
 export const movementEvent = (box) => {
-    addEventListener("keypress", (ev) => {
+  addEventListener("keypress", (ev) => {
     // ev.preventDefault();
     const { x, y, z } = box.current.translation();
     switch (ev.key) {
@@ -27,5 +27,5 @@ export const movementEvent = (box) => {
       default:
         break;
     }
-  })
+  });
 };
