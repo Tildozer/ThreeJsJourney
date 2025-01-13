@@ -590,22 +590,26 @@ openGl Documentation sites
 ### 7.8 **Postprocessing**
 
 Post Processing
-    [Repository](https://github.com/pmndrs/postprocessing)
+>
+> - [Repository](https://github.com/pmndrs/postprocessing)
+>
+> - [Documentation](https://pmndrs.github.io/postprocessing/public/docs/)
+>
+> - [Demo Page](https://pmndrs.github.io/postprocessing/public/demo/)
+>
+> - [Custom Effects](https://github.com/pmndrs/postprocessing/wiki/Custom-Effects)
 
-    [Documentation](https://pmndrs.github.io/postprocessing/public/docs/)
-
-    [Demo Page](https://pmndrs.github.io/postprocessing/public/demo/)
-
-    [Custom Effects](https://github.com/pmndrs/postprocessing/wiki/Custom-Effects)
+&nbsp;
 
 React-postprocessing
-    [Repository](https://github.com/pmndrs/react-postprocessing)
-
-    [Documentation](https://github.com/pmndrs/postprocessing#included-effects)
-
-    [Demo Page](https://docs.pmnd.rs/react-postprocessing/introduction)
-
-    [Custom Effects](https://docs.pmnd.rs/react-postprocessing/effects/custom-effects)
+>
+> - [Repository](https://github.com/pmndrs/react-postprocessing)
+>
+> - [Documentation](https://github.com/pmndrs/postprocessing#included-effects)
+>
+> - [Demo Page](https://docs.pmnd.rs/react-postprocessing/introduction)
+>
+> - [Custom Effects](https://docs.pmnd.rs/react-postprocessing/effects/custom-effects)
 
 ### 7.9 **Laptop Scene**
 
@@ -613,4 +617,44 @@ React-postprocessing
     [Congifure reactSpring](https://react-spring.dev/docs/advanced/config#configs)
 
 [use-gesture](https://use-gesture.netlify.app/)
-    [touch actions](https://use-gesture.netlify.app/docs/extras/#touch-action)
+
+[touch actions](https://use-gesture.netlify.app/docs/extras/#touch-action)
+
+### 7.10 **Physics**
+
+[Rapier](https://rapier.rs/)
+
+> - [Colliders Overview](https://rapier.rs/docs/user_guides/bevy_plugin/colliders/#overview)
+> - [Joints](https://rapier.rs/docs/user_guides/javascript/joints/)
+
+&nbsp;
+
+[Rapier Documentation](https://rapier.rs/javascript3d/index.html)
+>
+> - [RigidBody](https://rapier.rs/javascript3d/classes/RigidBody.html)
+>
+> - [Ball](https://rapier.rs/javascript3d/classes/Ball.html)
+>
+> - [Cuboid](https://rapier.rs/javascript3d/classes/Cuboid.html)
+>
+> - [RoundCuboid](https://rapier.rs/javascript3d/classes/RoundCuboid.html)
+>
+> - [Capsule](https://rapier.rs/javascript3d/classes/Capsule.html)
+>
+> - [Cone](https://rapier.rs/javascript3d/classes/Cone.html)
+>
+> - [Cylinder](https://rapier.rs/javascript3d/classes/Cylinder.html)
+>
+> - [ConvexPolyhedron](https://rapier.rs/javascript3d/classes/ConvexPolyhedron.html)
+>
+> - [TriMesh](https://rapier.rs/javascript3d/classes/TriMesh.html)
+>
+> - [Heightfield](https://rapier.rs/javascript3d/classes/Heightfield.html)
+
+&nbsp;
+
+[React Three Rapier](https://github.com/pmndrs/react-three-rapier)
+>
+> - [ReadMe](https://github.com/pmndrs/react-three-rapier#readme)
+>
+> - [Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
