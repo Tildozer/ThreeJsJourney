@@ -1,5 +1,5 @@
 import { OrbitControls } from "@react-three/drei";
-import { Level, Lights } from "./components";
+import { Level, Lights, Player } from "./components";
 import { Physics } from "@react-three/rapier";
 
 const Experience = () => {
@@ -9,6 +9,7 @@ const Experience = () => {
 
       <Physics debug>
         <Lights />
+        <Player />
         <Level />
       </Physics>
     </>

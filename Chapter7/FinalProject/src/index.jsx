@@ -4,23 +4,35 @@ import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.jsx";
 import { MaterialsProvider } from "./MaterialsContext.jsx";
 import { GeometriesProvider } from "./GeometriesContext.jsx";
+import { KeyboardControls } from "@react-three/drei";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
 root.render(
-  <Canvas
-    shadows
-    camera={{
-      fov: 45,
-      near: 0.1,
-      far: 200,
-      position: [2.5, 4, 6],
-    }}
+  <KeyboardControls
+    map={[
+      { name: "foward", keys: ["KeyW", "ArrowUp"] },
+      { name: "backward", keys: ["KeyS", "ArrowDown"] },
+      { name: "left", keys: ["KeyA", "ArrowLeft"] },
+      { name: "right", keys: ["KeyD", "ArrowRight"] },
+      { name: "jump", keys: ["Space"] },
+    ]}
   >
-    <GeometriesProvider>
-      <MaterialsProvider>
-        <Experience />
-      </MaterialsProvider>
-    </GeometriesProvider>
-  </Canvas>,
+    <Canvas
+      shadows
+      camera={{
+        fov: 45,
+        near: 0.1,
+        far: 200,
+        position: [2.5, 4, 6],
+      }}
+    >
+      <GeometriesProvider>
+        <MaterialsProvider>
+          <Experience />
+        </MaterialsProvider>
+      </GeometriesProvider>
+    </Canvas>
+    ,
+  </KeyboardControls>,
 );
