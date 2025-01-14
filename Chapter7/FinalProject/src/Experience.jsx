@@ -1,11 +1,11 @@
-import { OrbitControls } from "@react-three/drei";
+// import { OrbitControls } from "@react-three/drei";
 import { Level, Lights, Player } from "./components";
 import { Physics } from "@react-three/rapier";
 
 const Experience = () => {
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       <Physics 
         // debug

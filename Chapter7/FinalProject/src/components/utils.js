@@ -1,3 +1,23 @@
+import * as THREE from "three";
+
+export const moveCamera = (bodyPosition, camera, delta, smoothCameraPosition, smoothCameraTarget ) => {
+    const cameraPosition = new THREE.Vector3();
+    cameraPosition.copy(bodyPosition);
+
+    cameraPosition.z += 2.25;
+    cameraPosition.y += 0.65;
+    
+    const cameraTarget = new THREE.Vector3();
+    cameraTarget.copy(bodyPosition);
+    cameraTarget.y += 0.25;
+
+    smoothCameraPosition.lerp(cameraPosition, 5 * delta);
+    smoothCameraTarget.lerp(cameraTarget, 5 * delta);
+    
+    camera.position.copy(smoothCameraPosition);
+    camera.lookAt(smoothCameraTarget);
+}
+
 export const movePlayer = (
   { forward, rightward, backward, leftward },
   body,
@@ -31,7 +51,10 @@ export const movePlayer = (
 
   body.current.applyImpulse(impulse);
   body.current.applyTorqueImpulse(torque);
+
+  return body.current.translation();
 };
+
 
 export const jump = (body, Ray, world) => {
   const origin = body.current.translation();

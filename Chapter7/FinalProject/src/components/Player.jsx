@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useMaterials } from "../MaterialsContext";
 import { useGeometries } from "../GeometriesContext";
 import { RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
-import { movePlayer, jump } from "./utils";
-import { useEffect } from "react";
+import { movePlayer, jump, moveCamera } from "./utils";
+import { Vector3 } from "three";
 
 const Player = () => {
   const { playerMaterial } = useMaterials();
@@ -13,6 +13,8 @@ const Player = () => {
   const { icosahedronGeometry } = useGeometries();
 
   const body = useRef();
+  const [smoothCameraPosition] = useState(() => new Vector3(10, 10, 10));
+  const [smoothCameraTarget] = useState(() => new Vector3());
 
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const {
@@ -30,10 +32,11 @@ const Player = () => {
     
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame(({camera}, delta) => {
     const keys = getKeys();
 
-    movePlayer(keys, body, delta);
+    const playerPosition = movePlayer(keys, body, delta);
+    moveCamera(playerPosition, camera, delta, smoothCameraPosition, smoothCameraTarget);
   });
 
   return (
