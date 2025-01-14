@@ -1,18 +1,18 @@
-import { Spinner } from "./";
+import { Axe, Limbo, Spinner } from "./";
 import { useMaterials } from "../../../MaterialsContext";
 import { useGeometries } from "../../../GeometriesContext";
 
-const BlockSpinner = ({ position = [0, 0, 0] }) => {
+const BlockSpinner = ({ position = [0, 0, 0], i }) => {
   const { floorMaterial } = useMaterials();
   const { boxGeometry } = useGeometries();
 
-  const traps = [Spinner],
-    // Trap = traps[Math.floor(Math.random() * traps.length)];
-    Trap = traps[0];
+  const traps = [Spinner, Limbo, Axe],
+    Trap = traps[i % 3];
+    // Trap = traps[2];
 
   return (
     <group position={position}>
-      <Trap />
+      <Trap position={position} />
       <mesh
         receiveShadow
         geometry={boxGeometry}
