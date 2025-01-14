@@ -1,5 +1,6 @@
 import { useGeometries } from "../../GeometriesContext";
 import { useMaterials } from "../../MaterialsContext";
+import { Hamburger } from "./";
 
 const BlockEnd = ({ position = [0, 0, 0], geometry }) => {
   const { startMaterial } = useMaterials();
@@ -7,6 +8,7 @@ const BlockEnd = ({ position = [0, 0, 0], geometry }) => {
 
   return (
     <group position={position}>
+      <Hamburger position={[0, 0.25, 0]} />
       <mesh
         receiveShadow
         geometry={boxGeometry}

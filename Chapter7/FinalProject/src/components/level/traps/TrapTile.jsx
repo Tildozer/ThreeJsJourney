@@ -1,14 +1,9 @@
-import { Axe, Limbo, Spinner } from "./";
 import { useMaterials } from "../../../MaterialsContext";
 import { useGeometries } from "../../../GeometriesContext";
 
-const BlockSpinner = ({ position = [0, 0, 0], i }) => {
+const TrapTile = ({ position = [0, 0, 0], Trap }) => {
   const { floorMaterial } = useMaterials();
   const { boxGeometry } = useGeometries();
-
-  const traps = [Spinner, Limbo, Axe],
-    Trap = traps[i % 3];
-    // Trap = traps[2];
 
   return (
     <group position={position}>
@@ -24,4 +19,4 @@ const BlockSpinner = ({ position = [0, 0, 0], i }) => {
   );
 };
 
-export default BlockSpinner;
+export default TrapTile;
