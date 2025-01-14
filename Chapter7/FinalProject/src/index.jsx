@@ -11,10 +11,10 @@ const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
   <KeyboardControls
     map={[
-      { name: "foward", keys: ["KeyW", "ArrowUp"] },
+      { name: "forward", keys: ["KeyW", "ArrowUp"] },
       { name: "backward", keys: ["KeyS", "ArrowDown"] },
-      { name: "left", keys: ["KeyA", "ArrowLeft"] },
-      { name: "right", keys: ["KeyD", "ArrowRight"] },
+      { name: "leftward", keys: ["KeyA", "ArrowLeft"] },
+      { name: "rightward", keys: ["KeyD", "ArrowRight"] },
       { name: "jump", keys: ["Space"] },
     ]}
   >

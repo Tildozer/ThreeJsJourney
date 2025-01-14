@@ -7,7 +7,9 @@ const Experience = () => {
     <>
       <OrbitControls makeDefault />
 
-      <Physics debug>
+      <Physics 
+        // debug
+      >
         <Lights />
         <Player />
         <Level />
