@@ -1,20 +1,26 @@
-import './style.css'
-import ReactDOM from 'react-dom/client'
-import { Canvas } from '@react-three/fiber'
-import Experience from './Experience.jsx'
+import "./style.css";
+import ReactDOM from "react-dom/client";
+import { Canvas } from "@react-three/fiber";
+import Experience from "./Experience.jsx";
+import { MaterialsProvider } from "./MaterialsContext.jsx";
+import { GeometriesProvider } from "./GeometriesContext.jsx";
 
-const root = ReactDOM.createRoot(document.querySelector('#root'))
+const root = ReactDOM.createRoot(document.querySelector("#root"));
 
 root.render(
-    <Canvas
-        shadows
-        camera={ {
-            fov: 45,
-            near: 0.1,
-            far: 200,
-            position: [ 2.5, 4, 6 ]
-        } }
-    >
+  <Canvas
+    shadows
+    camera={{
+      fov: 45,
+      near: 0.1,
+      far: 200,
+      position: [2.5, 4, 6],
+    }}
+  >
+    <GeometriesProvider>
+      <MaterialsProvider>
         <Experience />
-    </Canvas>
-)
+      </MaterialsProvider>
+    </GeometriesProvider>
+  </Canvas>,
+);
