@@ -72,3 +72,10 @@ export const jump = (body, Ray, world) => {
   if (hit.timeOfImpact < 0.15)
     body.current.applyImpulse({ x: 0, y: 0.5, z: 0 });
 };
+
+export const reset = (body) => {
+  console.log("reset");
+  body.current.setTranslation({ x: 0, y: 1, z: 0 });
+  body.current.setLinvel({ x: 0, y: 0, z: 0 });
+  body.current.setAngvel({ x: 0, y: 0, z: 0 });
+};

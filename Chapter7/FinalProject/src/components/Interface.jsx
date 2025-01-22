@@ -1,12 +1,19 @@
 import { useKeyboardControls } from "@react-three/drei";
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
+import useGame from "../stores/useGame";
+import { addEffect } from "@react-three/fiber";
 
 const Interface = () => {
-  const [time, setTime] = useState(0.0);
+  const time = useRef();
+
+  const [phase, restart] = [
+    useGame((state) => state.phase),
+    useGame((state) => state.restart),
+  ];
 
   const reset = (ev) => {
     ev.preventDefault();
-    setTime(0.0);
+    restart();
   };
 
   const [forward, backward, leftward, rightward, jump] = [
@@ -18,24 +25,55 @@ const Interface = () => {
   ];
 
   const makeRow = (keys, large = false) => {
-    return keys.map((key) => {
+    return keys.map((key, idx) => {
       return (
         <div
+          key={idx}
           className={`key ${large ? "large" : ""} ${key ? "active" : ""}`}
         ></div>
       );
     });
   };
 
+  useEffect(() => {
+    const unsubscribeEffect = addEffect(() => {
+      const state = useGame.getState();
+
+      let elapsedTime = 0;
+
+      if (state.phase === "playing") {
+        elapsedTime = Date.now() - state.startTime;
+      }
+
+      if (state.phase === "ended") {
+        elapsedTime = state.endTime - state.startTime;
+      }
+
+      if (time.current) {
+        time.current.innerText = (elapsedTime / 1000).toFixed(2);
+      }
+    });
+
+    return () => {
+      unsubscribeEffect();
+    };
+  }, []);
+
   return (
     <div className="interface">
-      <div className="time">0.00</div>
+      <div ref={time} className="time">
+        0.00
+      </div>
 
-      <button className="restart">RESTART</button>
+      {phase === "ended" && (
+        <button onClick={(ev) => reset(ev)} className="restart">
+          RESTART
+        </button>
+      )}
 
       <div className="controls">
         <div className="raw">{makeRow([forward])}</div>
-        <div className="raw">{makeRow([leftward, rightward, backward])}</div>
+        <div className="raw">{makeRow([leftward, backward, rightward])}</div>
         <div className="raw">{makeRow([jump], true)}</div>
       </div>
     </div>

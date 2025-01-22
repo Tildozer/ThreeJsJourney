@@ -4,12 +4,12 @@ import { useGeometries } from "../GeometriesContext";
 import { RigidBody, useRapier } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
-import { movePlayer, jump, moveCamera } from "./utils";
+import { movePlayer, jump, moveCamera, reset } from "./utils";
 import { Vector3 } from "three";
+import useGame from "../stores/useGame";
 
 const Player = () => {
   const { playerMaterial } = useMaterials();
-  playerMaterial.flatShading = true;
   const { icosahedronGeometry } = useGeometries();
 
   const body = useRef();
@@ -22,13 +22,34 @@ const Player = () => {
     world,
   } = useRapier();
 
+  const [start, restart, end, blocksCount] = [
+    useGame((state) => state.start),
+    useGame((state) => state.restart),
+    useGame((state) => state.end),
+    useGame((state) => state.blocksCount),
+  ];
+
   useEffect(() => {
+    playerMaterial.flatShading = true;
+
     const unsubscribe = subscribeKeys(
       (state) => state.jump,
       (value) => (value ? jump(body, Ray, world) : null),
     );
 
-    return () => unsubscribe();
+    const unsubscribeAny = subscribeKeys(() => start(unsubscribeAny));
+
+    const unsubscribeReset = useGame.subscribe(
+      (state) => state.phase,
+      (phase) => {
+        if (phase === "ready") reset(body);
+      },
+    );
+    return () => {
+      unsubscribe();
+      unsubscribeAny();
+      unsubscribeReset();
+    };
   }, []);
 
   useFrame(({ camera }, delta) => {
@@ -42,6 +63,10 @@ const Player = () => {
       smoothCameraPosition,
       smoothCameraTarget,
     );
+
+    if (playerPosition.z < -(blocksCount * 4 + 2)) end();
+
+    if (playerPosition.y < -4) restart();
   });
 
   return (
