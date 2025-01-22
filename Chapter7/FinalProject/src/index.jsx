@@ -1,10 +1,11 @@
 import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
-import Experience from "./Experience.jsx";
+import { Interface } from "./components";
 import { MaterialsProvider } from "./MaterialsContext.jsx";
 import { GeometriesProvider } from "./GeometriesContext.jsx";
 import { KeyboardControls } from "@react-three/drei";
+import Experience from "./Experience.jsx";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
@@ -27,12 +28,13 @@ root.render(
         position: [2.5, 4, 6],
       }}
     >
+      {/* <color attach="background" args={["#87CEEB"]} /> */}
       <GeometriesProvider>
         <MaterialsProvider>
           <Experience />
         </MaterialsProvider>
       </GeometriesProvider>
     </Canvas>
-    ,
+    <Interface />
   </KeyboardControls>,
 );

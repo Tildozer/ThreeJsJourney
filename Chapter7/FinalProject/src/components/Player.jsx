@@ -29,14 +29,19 @@ const Player = () => {
     );
 
     return () => unsubscribe();
-    
   }, []);
 
-  useFrame(({camera}, delta) => {
+  useFrame(({ camera }, delta) => {
     const keys = getKeys();
 
     const playerPosition = movePlayer(keys, body, delta);
-    moveCamera(playerPosition, camera, delta, smoothCameraPosition, smoothCameraTarget);
+    moveCamera(
+      playerPosition,
+      camera,
+      delta,
+      smoothCameraPosition,
+      smoothCameraTarget,
+    );
   });
 
   return (
