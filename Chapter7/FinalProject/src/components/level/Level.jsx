@@ -2,7 +2,12 @@ import { useMemo } from "react";
 import { BlockEnd, BlockStart, Bounds } from "./";
 import { TrapTile, Axe, Limbo, Spinner } from "./traps";
 
-const Level = ({ count = 5, traps = [Spinner, Limbo, Axe], order = [] }) => {
+const Level = ({
+  count = 5,
+  traps = [Spinner, Limbo, Axe],
+  order = [],
+  seed = 0,
+}) => {
   const end = (count + 1) * -4;
 
   const blocks = useMemo(() => {
@@ -24,7 +29,7 @@ const Level = ({ count = 5, traps = [Spinner, Limbo, Axe], order = [] }) => {
     }
 
     return blocks;
-  }, [count, traps, order]);
+  }, [count, traps, order, seed]);
 
   return (
     <>
@@ -35,5 +40,4 @@ const Level = ({ count = 5, traps = [Spinner, Limbo, Axe], order = [] }) => {
     </>
   );
 };
-
 export default Level;

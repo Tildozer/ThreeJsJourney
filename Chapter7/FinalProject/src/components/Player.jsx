@@ -29,6 +29,10 @@ const Player = () => {
     useGame((state) => state.blocksCount),
   ];
 
+  const unsubscribeAny = () => {
+    const unsubscribe = subscribeKeys(() => start(unsubscribe));
+  };
+
   useEffect(() => {
     playerMaterial.flatShading = true;
 
@@ -37,12 +41,15 @@ const Player = () => {
       (value) => (value ? jump(body, Ray, world) : null),
     );
 
-    const unsubscribeAny = subscribeKeys(() => start(unsubscribeAny));
+    unsubscribeAny();
 
     const unsubscribeReset = useGame.subscribe(
       (state) => state.phase,
       (phase) => {
-        if (phase === "ready") reset(body);
+        if (phase === "ready") {
+          reset(body);
+          unsubscribeAny();
+        }
       },
     );
     return () => {

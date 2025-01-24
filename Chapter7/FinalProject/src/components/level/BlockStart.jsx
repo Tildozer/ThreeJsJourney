@@ -1,12 +1,16 @@
 import { useGeometries } from "../../GeometriesContext";
 import { useMaterials } from "../../MaterialsContext";
+import useGame from "../../stores/useGame";
+import Title from "./Title";
 
 const BlockStart = ({ position = [0, 0, 0], geometry }) => {
   const { startMaterial } = useMaterials();
   const { boxGeometry } = useGeometries();
+  const phase = useGame((state) => state.phase);
 
   return (
     <group position={position}>
+      {phase === "ready" && <Title />}
       <mesh
         receiveShadow
         geometry={boxGeometry}
