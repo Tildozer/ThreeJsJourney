@@ -515,6 +515,13 @@ openGl Documentation sites
 
 [2D Matrices](https://thebookofshaders.com/08/)
 
+### 4.6 **coffee smoke**
+
+[smoothStep](https://thebookofshaders.com/glossary/?search=smoothstep)
+    moothstep performs smooth Hermite interpolation between 0 and 1 when edge0 < x < edge1. This is useful in cases where a threshold function with a smooth transition is desired.
+
+[Perlin Noise maker](http://kitfox.com/projects/perlinNoiseMaker/)
+
 ## Chapter 5
 
 ### 5.1: **Post-Processing**
@@ -658,3 +665,9 @@ React-postprocessing
 > - [ReadMe](https://github.com/pmndrs/react-three-rapier#readme)
 >
 > - [Examples](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
+
+### 7.11 **create a game**
+
+[Keyboard Controls](https://github.com/pmndrs/drei#keyboardcontrols)
+
+[Zustand](https://zustand-demo.pmnd.rs/)
