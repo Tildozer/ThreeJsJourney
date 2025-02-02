@@ -522,6 +522,28 @@ openGl Documentation sites
 
 [Perlin Noise maker](http://kitfox.com/projects/perlinNoiseMaker/)
 
+### 4.8 **lights Shading**
+
+GLSL function
+>
+>[normalize](https://registry.khronos.org/OpenGL-Refpages/gl4/html/normalize.xhtml)
+>
+>[dot](https://registry.khronos.org/OpenGL-Refpages/gl4/html/dot.xhtml)
+>
+>[length](https://registry.khronos.org/OpenGL-Refpages/gl4/html/length.xhtml)
+>
+>[reflect](https://registry.khronos.org/OpenGL-Refpages/gl4/html/reflect.xhtml)
+
+[OGLDEV](https://www.youtube.com/@OGLDEV)
+>
+>[diffuse lighting](https://www.youtube.com/watch?v=e-lnyzN2wrM)
+>
+>[specular lighting](https://www.youtube.com/watch?v=dJo1Ao9XydM&t=740s)
+>
+>[MultiplePoint lights](https://www.youtube.com/watch?v=ToCSRyXva5w)
+>
+>[spot lights](https://www.youtube.com/watch?v=MAJqiDll0a8)
+
 ## Chapter 5
 
 ### 5.1: **Post-Processing**
