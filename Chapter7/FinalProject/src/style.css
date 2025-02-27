@@ -39,7 +39,7 @@ body,
 
   top: 40%;
   width: 100%;
-  font-size: 80px;
+  font-size: 8vh;
 
   color: #ffffff;
   border: none;
@@ -63,15 +63,15 @@ body,
 }
 
 .controls .key {
-  width: 40px;
-  height: 40px;
-  margin: 4px;
+  width: 2vh;
+  height: 2vh;
+  margin: 0.25vh;
   border: 2px solid #ffffff;
   background: #ffffff44;
 }
 
 .controls .key.large {
-  width: 144px;
+  width: 8vh;
 }
 
 .controls .key.active {
