@@ -36,6 +36,12 @@ window.addEventListener('resize', () =>
     sizes.height = window.innerHeight
     sizes.pixelRatio = Math.min(window.devicePixelRatio, 2)
 
+    material.uniforms.uResolution.value = new THREE.Vector2(
+        sizes.width * sizes.pixelRatio,
+        sizes.height * sizes.pixelRatio,
+
+    )
+
     // Update camera
     camera.aspect = sizes.width / sizes.height
     camera.updateProjectionMatrix()
@@ -93,6 +99,16 @@ const material = new THREE.ShaderMaterial({
     {
         uColor: new THREE.Uniform(new THREE.Color(materialParameters.color)),
         uShadeColor: new THREE.Uniform(new THREE.Color(materialParameters.shadeColor)),
+        uResolution: new THREE.Uniform(new THREE.Vector2(
+            sizes.width * sizes.pixelRatio, 
+            sizes.height * sizes.pixelRatio
+        )
+    ),
+    uRepetitions: new THREE.Uniform(100),
+    uDirection: new THREE.Uniform(new THREE.Vector3(0, -1, 0)),
+    uLow: new THREE.Uniform(-0.8),
+    uHigh: new THREE.Uniform(1.5),
+    UPointColor: new THREE.Uniform(new THREE.Color("#8e19b8")),
     }
 })
 
